@@ -22,6 +22,45 @@ namespace HRManagement.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("HRManagement.Areas.Admin.Models.Author", b =>
+                {
+                    b.Property<int>("AuthorId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AuthorId"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("AuthorId");
+
+                    b.ToTable("Authors");
+                });
+
+            modelBuilder.Entity("HRManagement.Areas.Admin.Models.Book", b =>
+                {
+                    b.Property<int>("BookId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BookId"), 1L, 1);
+
+                    b.Property<int>("AuthorId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("BookId");
+
+                    b.HasIndex("AuthorId");
+
+                    b.ToTable("Books");
+                });
+
             modelBuilder.Entity("HRManagement.Models.DepartmentDetail", b =>
                 {
                     b.Property<int>("DepartmentId")
@@ -48,12 +87,16 @@ namespace HRManagement.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EmployeeId"), 1L, 1);
 
-                    b.Property<int>("Address")
+                    b.Property<string>("Address")
+                        .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("DepartmentDetailDepartmentId")
+                        .HasColumnType("int");
 
                     b.Property<int>("DepartmentId")
                         .HasColumnType("int");
@@ -94,7 +137,7 @@ namespace HRManagement.Migrations
 
                     b.HasKey("EmployeeId");
 
-                    b.HasIndex("DepartmentId");
+                    b.HasIndex("DepartmentDetailDepartmentId");
 
                     b.ToTable("EmployeeDetails");
                 });
@@ -106,9 +149,6 @@ namespace HRManagement.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SNo"), 1L, 1);
-
-                    b.Property<int>("EmployeeDetailEmployeeId")
-                        .HasColumnType("int");
 
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
@@ -126,8 +166,6 @@ namespace HRManagement.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.HasKey("SNo");
-
-                    b.HasIndex("EmployeeDetailEmployeeId");
 
                     b.HasIndex("TrainingDetailTrainingId");
 
@@ -312,11 +350,22 @@ namespace HRManagement.Migrations
                     b.ToTable("TrainingDetails");
                 });
 
+            modelBuilder.Entity("HRManagement.Areas.Admin.Models.Book", b =>
+                {
+                    b.HasOne("HRManagement.Areas.Admin.Models.Author", "Author")
+                        .WithMany("Books")
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Author");
+                });
+
             modelBuilder.Entity("HRManagement.Models.EmployeeDetail", b =>
                 {
                     b.HasOne("HRManagement.Models.DepartmentDetail", "DepartmentDetail")
                         .WithMany("EmployeeDetail")
-                        .HasForeignKey("DepartmentId")
+                        .HasForeignKey("DepartmentDetailDepartmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -325,19 +374,11 @@ namespace HRManagement.Migrations
 
             modelBuilder.Entity("HRManagement.Models.EmployeeTrainingDetail", b =>
                 {
-                    b.HasOne("HRManagement.Models.EmployeeDetail", "EmployeeDetail")
-                        .WithMany("EmployeeTrainingDetail")
-                        .HasForeignKey("EmployeeDetailEmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("HRManagement.Models.TrainingDetail", "TrainingDetail")
                         .WithMany("EmployeeTrainingDetail")
                         .HasForeignKey("TrainingDetailTrainingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("EmployeeDetail");
 
                     b.Navigation("TrainingDetail");
                 });
@@ -386,14 +427,14 @@ namespace HRManagement.Migrations
                     b.Navigation("EmployeeDetail");
                 });
 
+            modelBuilder.Entity("HRManagement.Areas.Admin.Models.Author", b =>
+                {
+                    b.Navigation("Books");
+                });
+
             modelBuilder.Entity("HRManagement.Models.DepartmentDetail", b =>
                 {
                     b.Navigation("EmployeeDetail");
-                });
-
-            modelBuilder.Entity("HRManagement.Models.EmployeeDetail", b =>
-                {
-                    b.Navigation("EmployeeTrainingDetail");
                 });
 
             modelBuilder.Entity("HRManagement.Models.TrainingDetail", b =>

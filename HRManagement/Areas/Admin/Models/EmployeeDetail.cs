@@ -7,8 +7,7 @@ namespace HRManagement.Models
     public class EmployeeDetail
     {
         [Key]
-        [DatabaseGenerated(databaseGeneratedOption: DatabaseGeneratedOption.Identity)]
-        public int EmployeeId { get; set; } = 1000;
+        public int EmployeeId { get; set; }
 
         [StringLength(50)]
         [MinLength(5)]
@@ -50,12 +49,12 @@ namespace HRManagement.Models
         [DataType(DataType.DateTime)]
         public DateTime JoiningDate { get; set; }
 
-        [ForeignKey("DepartmentDetail")]
+        [ForeignKey("DepartmentId")]
         public int DepartmentId { get; set; }
-        //public DepartmentDetail DepartmentDetail { get; set; }
+        public DepartmentDetail DepartmentDetail { get; set; }
 
 
-        public ICollection<EmployeeTrainingDetail> EmployeeTrainingDetail { get; set; }
+        //public ICollection<EmployeeTrainingDetail> EmployeeTrainingDetail { get; set; }
 
     }
 }
