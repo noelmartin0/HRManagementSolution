@@ -118,23 +118,23 @@
             LeaveDetail l = _context.LeaveDetails.Find(id);
             l.TotalDays = leave.TotalDays;
             l.DaysTaken = leave.DaysTaken;
-            l.LeavesLeft = l.TotalLeaves - l.LeavesTaken;
+            l.DaysRemaining = l.TotalDays - l.DaysTaken;
             _context.SaveChanges();
 
         }
 
         public void UpdateEmployeePayroll(int id, PayrollDetail payroll)
         {
-            PayrollDetail e = _context.Payrolls.Find(id);
-            e.BasicPay = payroll.BasicPay;
-            e.Allowances = payroll.Allowances;
-            e.Deductions = payroll.Deductions;
+            PayrollDetail e = _context.PayrollDetails.Find(id);
+            e.Basicpay = payroll.Basicpay;
+            e.Allowance = payroll.Allowance;
+            e.Deduction = payroll.Deduction;
             _context.SaveChanges();
         }
 
         public void UpdateEmployeePerformance(int id, PerformanceDetail performance)
         {
-            PerformanceDetail e = _context.Performances.Find(id);
+            PerformanceDetail e = _context.PerformanceDetails.Find(id);
             e.EvaluatorName = performance.EvaluatorName;
             e.EvaluationPeriod = performance.EvaluationPeriod;
             _context.SaveChanges();
@@ -147,30 +147,30 @@
 
         public ResumeTrackingDetail GetResumeById(int id)
         {
-            ResumeTrackingDetail resume = _context.Resumes.Find(id);
+            ResumeTrackingDetail resume = _context.ResumeTrackingDetails.Find(id);
             return resume;
         }
 
         public List<ResumeTrackingDetail> GetAllResumes()
         {
-            return _context.Resumes.ToList();
+            return _context.ResumeTrackingDetails.ToList();
         }
 
         public void UpdateResume(int id, ResumeTrackingDetail resume)
         {
-            ResumeTrackingDetail r = _context.Resumes.Find(id);
-            r.ApplicationName = resume.ApplicationName;
+            ResumeTrackingDetail r = _context.ResumeTrackingDetails.Find(id);
+            r.ApplicantName = resume.ApplicantName;
             r.PhoneNo = resume.PhoneNo;
-            r.PrevExperience = resume.PrevExperience;
-            r.Specialization = resume.Specializtion;
+            r.Experience = resume.Experience;
+            r.Specialization = resume.Specialization;
             r.AreaOfInterest = resume.AreaOfInterest;
             r.Qualification = resume.Qualification;
             _context.SaveChanges();
         }
 
-        public void AddEmpTraining(EmpTraining t)
+        public void AddEmpTraining(EmployeeTrainingDetail t)
         {
-            _context.Emptraining.Add(t);
+            _context.EmployeeTrainingDetails.Add(t);
             _context.SaveChanges();
         }
     }

@@ -17,7 +17,7 @@ namespace HRManagement.Models
         public decimal Allowance { get; set; }
 
         [DataType(DataType.Currency)]
-        public decimal Reduction { get; set; }
+        public decimal Deduction { get; set; }
 
         [DataType(DataType.Currency)]
         public decimal Grosspay { get; set; }
