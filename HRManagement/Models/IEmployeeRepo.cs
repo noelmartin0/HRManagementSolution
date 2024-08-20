@@ -38,12 +38,6 @@
 
         }
 
-        public void AddResume(ResumeTrackingDetail resume)
-        {
-
-            _context.ResumeTrackingDetails.Add(resume);
-            _context.SaveChanges();
-        }
 
         public void DeleteEmployee(int id)
         {

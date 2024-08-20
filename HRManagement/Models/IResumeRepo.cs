@@ -10,4 +10,56 @@
         void UpdateResume(int id, ResumeTrackingDetail resume);
 
     }
+
+    public class ResumeTrackingRepo : IResumeRepo
+    {
+
+        HRManagementDBContext _context;
+        public ResumeTrackingRepo(HRManagementDBContext context)
+        {
+            _context = context;
+        }
+
+        public void AddResume(ResumeTrackingDetail resume)
+        {
+
+            _context.ResumeTrackingDetails.Add(resume);
+            _context.SaveChanges();
+        }
+
+        public void DeleteResume(int id)
+        {
+            ResumeTrackingDetail m = _context.ResumeTrackingDetails.Find(id);
+            _context.ResumeTrackingDetails.Remove(m);
+
+        }
+
+        public List<ResumeTrackingDetail> GetAllResumes()
+        {
+            return _context.ResumeTrackingDetails.ToList();
+        }
+
+        public ResumeTrackingDetail GetResumeById(int id)
+        {
+            ResumeTrackingDetail m= _context.ResumeTrackingDetails.Find(id);
+            return m;
+        }
+
+        public void UpdateResume(int id, ResumeTrackingDetail resume)
+        {
+            ResumeTrackingDetail r = _context.ResumeTrackingDetails.Find(id);
+            r.ApplicantName = resume.ApplicantName;
+            r.PhoneNo = resume.PhoneNo;
+            r.Experience = resume.Experience;
+            r.Specialization = resume.Specialization;
+            r.AreaOfInterest = resume.AreaOfInterest;
+            r.Qualification = resume.Qualification;
+            _context.SaveChanges();
+        }
+
+
+    }
+
+
+
 }
