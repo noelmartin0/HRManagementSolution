@@ -7,23 +7,8 @@
         void AddEmployee(EmployeeDetail employee);
         void UpdateEmployee(int id, EmployeeDetail employee);
         void DeleteEmployee(int id);
-        void AddEmployeePayroll(PayrollDetail payroll);
-        void UpdateEmployeePayroll(int id, PayrollDetail payroll);
+       
         //havent written training functions
-        void AddEmployeePerformance(PerformanceDetail performance);
-        void UpdateEmployeePerformance(int id, PerformanceDetail performance);
-        void UpdateEmployeeLeaveDetail(int id, LeaveDetail leave);
-        void AddEmployeeResignation(ResignationDetail resignation);
-        ResumeTrackingDetail GetResumeById(int id);
-        List<ResumeTrackingDetail> GetAllResumes();
-        void AddResume(ResumeTrackingDetail resume);
-        //void UpdateResumeTrackingDetail(ResumeTrackingDetail resume);
-        void DeleteResume(int id);
-        void UpdateResume(int id, ResumeTrackingDetail resume);
-        void AddEmpTraining(EmployeeTrainingDetail t);
-
-
-
     }
 
 
@@ -42,18 +27,9 @@
             _context.SaveChanges();
         }
 
-        public void AddEmployeePayroll(PayrollDetail payroll)
-        {
-            _context.PayrollDetails.Add(payroll);
-            _context.SaveChanges();
-        }
 
-        public void AddEmployeePerformance(PerformanceDetail performance)
-        {
-            _context.PerformanceDetails.Add(performance);
-            _context.SaveChanges();
 
-        }
+
 
         public void AddEmployeeResignation(ResignationDetail resignation)
         {
@@ -123,22 +99,7 @@
 
         }
 
-        public void UpdateEmployeePayroll(int id, PayrollDetail payroll)
-        {
-            PayrollDetail e = _context.PayrollDetails.Find(id);
-            e.Basicpay = payroll.Basicpay;
-            e.Allowance = payroll.Allowance;
-            e.Deduction = payroll.Deduction;
-            _context.SaveChanges();
-        }
 
-        public void UpdateEmployeePerformance(int id, PerformanceDetail performance)
-        {
-            PerformanceDetail e = _context.PerformanceDetails.Find(id);
-            e.EvaluatorName = performance.EvaluatorName;
-            e.EvaluationPeriod = performance.EvaluationPeriod;
-            _context.SaveChanges();
-        }
 
 
 
@@ -174,9 +135,4 @@
             _context.SaveChanges();
         }
     }
-
-
-
 }
-
-

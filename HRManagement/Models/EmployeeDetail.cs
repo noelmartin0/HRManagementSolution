@@ -8,7 +8,6 @@ namespace HRManagement.Models
     {
         [Key]
         [DatabaseGenerated(databaseGeneratedOption: DatabaseGeneratedOption.Identity)]
-
         public int EmployeeId { get; set; } = 1000;
 
         [StringLength(50)]
@@ -36,8 +35,6 @@ namespace HRManagement.Models
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
-        [ForeignKey("DepartmentDetail")]
-        public int DepartmentId { get; set; }
 
         public int? ManagerId { get; set; }
 
@@ -53,12 +50,12 @@ namespace HRManagement.Models
         [DataType(DataType.DateTime)]
         public DateTime JoiningDate { get; set; }
 
-        [ForeignKey("DepartmentId")]
+        [ForeignKey("DepartmentDetail")]
+        public int DepartmentId { get; set; }
         public DepartmentDetail DepartmentDetail { get; set; }
 
-        public ICollection<EmployeeTrainingDetail> EmployeeTrainingDetail { get; set; }
-        public ICollection<ResignationDetail> ResignationDetails { get; set; }
 
+        public ICollection<EmployeeTrainingDetail> EmployeeTrainingDetail { get; set; }
 
     }
 }
