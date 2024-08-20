@@ -26,7 +26,7 @@ namespace HRManagement.Models
 
         [StringLength(100)]
         [MinLength(5)]
-        public int Address { get; set; }
+        public string Address { get; set; }
 
 
         public string PhoneNumber { get; set; }
@@ -52,7 +52,7 @@ namespace HRManagement.Models
 
         [ForeignKey("DepartmentDetail")]
         public int DepartmentId { get; set; }
-        public DepartmentDetail DepartmentDetail { get; set; }
+        //public DepartmentDetail DepartmentDetail { get; set; }
 
 
         public ICollection<EmployeeTrainingDetail> EmployeeTrainingDetail { get; set; }

@@ -9,7 +9,6 @@ namespace HRManagement.Models
         [Required]
         [StringLength(50)]
         public string DepartmentName { get; set; }
-
         public ICollection<EmployeeDetail> EmployeeDetail { get; set; }
     }
 }

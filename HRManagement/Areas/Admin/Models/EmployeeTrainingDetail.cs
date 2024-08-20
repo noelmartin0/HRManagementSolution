@@ -10,7 +10,7 @@ namespace HRManagement.Models
 
         [Required]
         public int EmployeeId { get; set; }
-        public EmployeeDetail EmployeeDetail { get; set; }
+        //public EmployeeDetail EmployeeDetail { get; set; }
         [Required]
         public string TrainingId { get; set; }
         public TrainingDetail TrainingDetail { get; set; }

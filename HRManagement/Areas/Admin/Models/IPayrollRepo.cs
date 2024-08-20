@@ -4,7 +4,7 @@
     {
         void AddEmployeePayroll(PayrollDetail payroll);
         void UpdateEmployeePayroll(int id, PayrollDetail payroll);
-
+        PayrollDetail GetPayrollByID(int id);
     }
 
     public class PayrollRepo : IPayrollRepo
@@ -29,6 +29,12 @@
             e.Allowance = payroll.Allowance;
             e.Deduction = payroll.Deduction;
             _context.SaveChanges();
+        }
+
+        PayrollDetail IPayrollRepo.GetPayrollByID(int id)
+        {
+            PayrollDetail m = _context.PayrollDetails.Find(id);
+            return m;
         }
 
 
