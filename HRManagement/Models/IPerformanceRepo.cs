@@ -4,6 +4,7 @@
     {
         void AddEmployeePerformance(PerformanceDetail performance);
         void UpdateEmployeePerformance(int id, PerformanceDetail performance);
+        PerformanceDetail GetPerformanceById(int id);
 
     }
 
@@ -20,6 +21,12 @@
             _context.PerformanceDetails.Add(performance);
             _context.SaveChanges();
 
+        }
+
+        public PerformanceDetail GetPerformanceById(int id)
+        {
+            PerformanceDetail m=_context.PerformanceDetails.Find(id);
+            return m;
         }
 
         public void UpdateEmployeePerformance(int id, PerformanceDetail performance)

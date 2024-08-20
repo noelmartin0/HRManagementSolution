@@ -5,10 +5,11 @@
         ResumeTrackingDetail GetResumeById(int id);
         List<ResumeTrackingDetail> GetAllResumes();
         void AddResume(ResumeTrackingDetail resume);
-        //void UpdateResumeTrackingDetail(ResumeTrackingDetail resume);
+        
         void DeleteResume(int id);
         void UpdateResume(int id, ResumeTrackingDetail resume);
 
+        //Write the promote() function
     }
 
     public class ResumeTrackingRepo : IResumeRepo

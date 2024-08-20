@@ -4,6 +4,7 @@
     {
         void AddEmployeePayroll(PayrollDetail payroll);
         void UpdateEmployeePayroll(int id, PayrollDetail payroll);
+        PayrollDetail GetPayrollDetail(int id);
 
     }
 
@@ -20,6 +21,12 @@
         {
             _context.PayrollDetails.Add(payroll);
             _context.SaveChanges();
+        }
+
+        public PayrollDetail GetPayrollDetail(int id)
+        {
+            PayrollDetail m= _context.PayrollDetails.Find(id);
+            return m;
         }
 
         public void UpdateEmployeePayroll(int id, PayrollDetail payroll)

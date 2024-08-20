@@ -27,18 +27,6 @@
             _context.SaveChanges();
         }
 
-
-
-
-
-        public void AddEmployeeResignation(ResignationDetail resignation)
-        {
-            _context.ResignationDetails.Add(resignation);
-            _context.SaveChanges();
-
-        }
-
-
         public void DeleteEmployee(int id)
         {
             EmployeeDetail e = _context.EmployeeDetails.Find(id);
@@ -47,12 +35,6 @@
 
         }
 
-        public void DeleteResume(int id)
-        {
-            ResumeTrackingDetail m = _context.ResumeTrackingDetails.Find(id);
-            _context.ResumeTrackingDetails.Remove(m);
-
-        }
 
         public List<EmployeeDetail> GetAllEmployees()
         {
@@ -80,46 +62,6 @@
             e.ManagerId = employee.ManagerId;
             e.Status = employee.Status;
             e.Position = employee.Position;
-            _context.SaveChanges();
-        }
-
-        public void UpdateEmployeeLeaveDetail(int id, LeaveDetail leave)
-        {
-            LeaveDetail l = _context.LeaveDetails.Find(id);
-            l.TotalDays = leave.TotalDays;
-            l.DaysTaken = leave.DaysTaken;
-            l.DaysRemaining = l.TotalDays - l.DaysTaken;
-            _context.SaveChanges();
-
-        }
-
-
-
-
-
-
-
-
-        public ResumeTrackingDetail GetResumeById(int id)
-        {
-            ResumeTrackingDetail resume = _context.ResumeTrackingDetails.Find(id);
-            return resume;
-        }
-
-        public List<ResumeTrackingDetail> GetAllResumes()
-        {
-            return _context.ResumeTrackingDetails.ToList();
-        }
-
-        public void UpdateResume(int id, ResumeTrackingDetail resume)
-        {
-            ResumeTrackingDetail r = _context.ResumeTrackingDetails.Find(id);
-            r.ApplicantName = resume.ApplicantName;
-            r.PhoneNo = resume.PhoneNo;
-            r.Experience = resume.Experience;
-            r.Specialization = resume.Specialization;
-            r.AreaOfInterest = resume.AreaOfInterest;
-            r.Qualification = resume.Qualification;
             _context.SaveChanges();
         }
 
