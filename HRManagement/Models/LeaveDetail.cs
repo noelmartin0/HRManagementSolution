@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 namespace HRManagement.Models
 {
-    public class LeaveManagement
+    public class LeaveDetail
     {
         [Key]
         public int SNo { get; set; }
