@@ -3,12 +3,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HRManagement.Models
 {
+    [Table("PayrollDetails")]
     public class PayrollDetail
     {
         [Key]
         public int PayrollID { get; set; }
         [Required]
-        public int EmployeeID { get; set; }
+     
+        public int EmployeeId { get; set; }
 
         [DataType(DataType.Currency)]
         public decimal Basicpay { get; set; }
@@ -25,8 +27,8 @@ namespace HRManagement.Models
         [DataType(DataType.Currency)]
         public decimal Netpay { get; set; }
 
-        [ForeignKey("EmployeeID")]
-        public EmployeeDetail EmployeeDetail { get; set; }
+       
+       public EmployeeDetail EmployeeDetail { get; set; }
 
 
     }

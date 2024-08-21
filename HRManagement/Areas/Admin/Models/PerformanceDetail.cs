@@ -2,12 +2,14 @@
 using System.ComponentModel.DataAnnotations.Schema;
 namespace HRManagement.Models
 {
+    [Table("PerdormaceDetails")]
     public class PerformanceDetail
     {
        [Key]
-       public int PerformanceId { get; set; } 
-       
-       public int EmployeeId { get; set; }   
+       public int PerformanceId { get; set; }
+ 
+
+        public int EmployeeId { get; set; }   
 
         [Required]
        public int DepartmentId { get; set; }
@@ -19,8 +21,8 @@ namespace HRManagement.Models
         [Required]
         public int EvaluationPeriod { get; set; }
 
-        [ForeignKey("EmployeeId")]
-        public EmployeeDetail EmployeeDetail { get; set; }
+       
+       public EmployeeDetail EmployeeDetail { get; set; }
 
         
 

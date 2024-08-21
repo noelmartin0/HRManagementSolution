@@ -2,12 +2,14 @@
 using System.ComponentModel.DataAnnotations.Schema;
 namespace HRManagement.Models
 {
+    [Table("LeaveDetails")]
     public class LeaveDetail
     {
         [Key]
         public int SNo { get; set; }
         [Required]
        
+
         public int EmployeeId { get; set; }
         [Required]
         public int TotalDays { get; set; }
@@ -19,7 +21,7 @@ namespace HRManagement.Models
         public int? DaysRemaining { get; set; }
 
 
-        [ForeignKey("EmployeeId")]
+       
         public EmployeeDetail EmployeeDetail { get; set; }
     }
 }

@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
-
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HRManagement.Models
 {
+    [Table("DepartmentDetails")]
     public class DepartmentDetail
     {
         [Key]
@@ -10,7 +11,7 @@ namespace HRManagement.Models
         [Required]
         [StringLength(50)]
         public string DepartmentName { get; set; }
-        public ICollection<EmployeeDetail> EmployeeDetail { get; set; }
+        zpublic ICollection<EmployeeDetail> EmployeeDetail { get; set; }
     }
 }
 

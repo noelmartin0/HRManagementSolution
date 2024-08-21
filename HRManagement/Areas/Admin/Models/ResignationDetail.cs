@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HRManagement.Models
 {
+    [Table("ResignationDetails")]
     public class ResignationDetail
     {
         [Key]
@@ -27,7 +28,7 @@ namespace HRManagement.Models
         public DateTime ResignDate { get; set; }
 
         // Navigation Properties
-        [ForeignKey("EmployeeId")]
-        public EmployeeDetail EmployeeDetail { get; set; }
+       
+       public EmployeeDetail EmployeeDetail { get; set; }
     }
 }
