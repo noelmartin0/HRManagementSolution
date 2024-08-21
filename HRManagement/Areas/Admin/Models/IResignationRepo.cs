@@ -1,10 +1,13 @@
 ﻿namespace HRManagement.Models
 {
-    interface IResignationRepo
+    public interface IResignationRepo
     {
         void AddEmployeeResignation(ResignationDetail resignation);
         ResignationDetail GetResignationById(int id);
         //List<ResignationDetail> GetDepartmentDetail(int deptid);
+        ResignationDetail GetResignationByEmployeeId(int empid);
+        void DeleteEmployeeResignation(int id);
+
     }
 
     public class ResignationRepo : IResignationRepo
@@ -25,10 +28,22 @@
         }
 
 
-
         public ResignationDetail GetResignationById(int id)
         {
             ResignationDetail r = _context.ResignationDetails.Find(id);
+            return r;
+        }
+
+        void IResignationRepo.DeleteEmployeeResignation(int id)
+        {
+            ResignationDetail r = _context.ResignationDetails.Find(id);
+            _context.ResignationDetails.Remove(r);  
+            _context.SaveChanges();
+        }
+
+        ResignationDetail IResignationRepo.GetResignationByEmployeeId(int empid)
+        {
+            ResignationDetail r = _context.ResignationDetails.FirstOrDefault(x => x.EmployeeId==empid);
             return r;
         }
     }

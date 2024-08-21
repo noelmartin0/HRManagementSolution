@@ -7,11 +7,11 @@ namespace HRManagement.Areas.Admin.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AdminController : ControllerBase
+    public class EmployeeController : ControllerBase
     {
 
         IEmployeeRepo _emp;
-        public AdminController(IEmployeeRepo repo)
+        public EmployeeController(IEmployeeRepo repo)
         {
             _emp = repo;
         }
