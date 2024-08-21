@@ -24,7 +24,7 @@
 
         }
 
-       
+
 
         public ResignationDetail GetResignationById(int id)
         {
@@ -34,6 +34,3 @@
     }
 
 }
-
-
-

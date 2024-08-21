@@ -23,9 +23,17 @@
 
         public void AddEmployee(EmployeeDetail employee)
         {
+            
             _context.EmployeeDetails.Add(employee);
             _context.SaveChanges();
         }
+
+
+
+
+
+     
+
 
         public void DeleteEmployee(int id)
         {
@@ -35,6 +43,7 @@
 
         }
 
+        
 
         public List<EmployeeDetail> GetAllEmployees()
         {
@@ -65,10 +74,15 @@
             _context.SaveChanges();
         }
 
-        public void AddEmpTraining(EmployeeTrainingDetail t)
-        {
-            _context.EmployeeTrainingDetails.Add(t);
-            _context.SaveChanges();
-        }
+       
+
+
+
+
+
+
+
+
+      
     }
 }

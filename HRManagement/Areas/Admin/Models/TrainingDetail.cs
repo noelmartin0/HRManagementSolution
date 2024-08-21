@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 namespace HRManagement.Models
 {
+    [Table("TrainingDetails")]
     public class TrainingDetail
     {
         [Key]
@@ -10,7 +11,7 @@ namespace HRManagement.Models
         [Required]
         public string TrainingName { get; set; }
         
-        public ICollection<EmployeeTrainingDetail> EmployeeTrainingDetail { get; set; }
+       // public ICollection<EmployeeTrainingDetail> EmployeeTrainingDetail { get; set; }
         
 
     }

@@ -12,6 +12,16 @@ builder.Services.AddDbContext<HRManagementDBContext>(options => options.UseSqlSe
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+builder.Services.AddScoped<IEmployeeRepo, EmployeeRepo>();
+builder.Services.AddScoped<IPayrollRepo, PayrollRepo>();
+builder.Services.AddScoped<ILeaveRepo, LeaveRepo>();
+builder.Services.AddScoped<IPerformanceRepo, PerformanceRepo>();
+builder.Services.AddScoped<IResumeRepo, ResumeTrackingRepo>();
+builder.Services.AddScoped<IResignationRepo, ResignationRepo>();
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

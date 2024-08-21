@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HRManagement.Migrations
 {
-    public partial class initialmigration : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,8 +13,7 @@ namespace HRManagement.Migrations
                 name: "DepartmentDetails",
                 columns: table => new
                 {
-                    DepartmentId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DepartmentId = table.Column<int>(type: "int", nullable: false),
                     DepartmentName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
@@ -26,8 +25,7 @@ namespace HRManagement.Migrations
                 name: "ResumeTrackingDetails",
                 columns: table => new
                 {
-                    ResumeID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ResumeID = table.Column<int>(type: "int", nullable: false),
                     ApplicantName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneNo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Qualification = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -44,8 +42,7 @@ namespace HRManagement.Migrations
                 name: "TrainingDetails",
                 columns: table => new
                 {
-                    TrainingId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TrainingId = table.Column<int>(type: "int", nullable: false),
                     TrainingName = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -57,12 +54,11 @@ namespace HRManagement.Migrations
                 name: "EmployeeDetails",
                 columns: table => new
                 {
-                    EmployeeId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EmployeeId = table.Column<int>(type: "int", nullable: false),
                     EmployeeName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Nationality = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Address = table.Column<int>(type: "int", maxLength: 100, nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ManagerId = table.Column<int>(type: "int", nullable: true),
@@ -79,33 +75,29 @@ namespace HRManagement.Migrations
                         column: x => x.DepartmentId,
                         principalTable: "DepartmentDetails",
                         principalColumn: "DepartmentId",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "EmployeeTrainingDetails",
                 columns: table => new
                 {
-                    SNo = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
                     EmployeeId = table.Column<int>(type: "int", nullable: false),
-                    EmployeeDetailEmployeeId = table.Column<int>(type: "int", nullable: false),
-                    TrainingId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TrainingDetailTrainingId = table.Column<int>(type: "int", nullable: false),
+                    TrainingId = table.Column<int>(type: "int", nullable: false),
                     TrainingStatus = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EmployeeTrainingDetails", x => x.SNo);
+                    table.PrimaryKey("PK_EmployeeTrainingDetails", x => new { x.EmployeeId, x.TrainingId });
                     table.ForeignKey(
-                        name: "FK_EmployeeTrainingDetails_EmployeeDetails_EmployeeDetailEmployeeId",
-                        column: x => x.EmployeeDetailEmployeeId,
+                        name: "FK_EmployeeTrainingDetails_EmployeeDetails_EmployeeId",
+                        column: x => x.EmployeeId,
                         principalTable: "EmployeeDetails",
                         principalColumn: "EmployeeId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_EmployeeTrainingDetails_TrainingDetails_TrainingDetailTrainingId",
-                        column: x => x.TrainingDetailTrainingId,
+                        name: "FK_EmployeeTrainingDetails_TrainingDetails_TrainingId",
+                        column: x => x.TrainingId,
                         principalTable: "TrainingDetails",
                         principalColumn: "TrainingId",
                         onDelete: ReferentialAction.Cascade);
@@ -115,8 +107,7 @@ namespace HRManagement.Migrations
                 name: "LeaveDetails",
                 columns: table => new
                 {
-                    SNo = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SNo = table.Column<int>(type: "int", nullable: false),
                     EmployeeId = table.Column<int>(type: "int", nullable: false),
                     TotalDays = table.Column<int>(type: "int", nullable: false),
                     DaysTaken = table.Column<int>(type: "int", nullable: true),
@@ -137,9 +128,8 @@ namespace HRManagement.Migrations
                 name: "PayrollDetails",
                 columns: table => new
                 {
-                    PayrollID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    EmployeeID = table.Column<int>(type: "int", nullable: false),
+                    PayrollID = table.Column<int>(type: "int", nullable: false),
+                    EmployeeId = table.Column<int>(type: "int", nullable: false),
                     Basicpay = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Allowance = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Deduction = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
@@ -150,8 +140,8 @@ namespace HRManagement.Migrations
                 {
                     table.PrimaryKey("PK_PayrollDetails", x => x.PayrollID);
                     table.ForeignKey(
-                        name: "FK_PayrollDetails_EmployeeDetails_EmployeeID",
-                        column: x => x.EmployeeID,
+                        name: "FK_PayrollDetails_EmployeeDetails_EmployeeId",
+                        column: x => x.EmployeeId,
                         principalTable: "EmployeeDetails",
                         principalColumn: "EmployeeId",
                         onDelete: ReferentialAction.Cascade);
@@ -161,8 +151,7 @@ namespace HRManagement.Migrations
                 name: "PerformanceDetails",
                 columns: table => new
                 {
-                    PerformanceId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PerformanceId = table.Column<int>(type: "int", nullable: false),
                     EmployeeId = table.Column<int>(type: "int", nullable: false),
                     DepartmentId = table.Column<int>(type: "int", nullable: false),
                     EvaluatorName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
@@ -183,8 +172,7 @@ namespace HRManagement.Migrations
                 name: "ResignationDetails",
                 columns: table => new
                 {
-                    Sno = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Sno = table.Column<int>(type: "int", nullable: false),
                     EmployeeId = table.Column<int>(type: "int", nullable: false),
                     DepartmentId = table.Column<int>(type: "int", nullable: false),
                     Position = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
@@ -209,34 +197,33 @@ namespace HRManagement.Migrations
                 column: "DepartmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EmployeeTrainingDetails_EmployeeDetailEmployeeId",
+                name: "IX_EmployeeTrainingDetails_TrainingId",
                 table: "EmployeeTrainingDetails",
-                column: "EmployeeDetailEmployeeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_EmployeeTrainingDetails_TrainingDetailTrainingId",
-                table: "EmployeeTrainingDetails",
-                column: "TrainingDetailTrainingId");
+                column: "TrainingId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_LeaveDetails_EmployeeId",
                 table: "LeaveDetails",
-                column: "EmployeeId");
+                column: "EmployeeId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_PayrollDetails_EmployeeID",
+                name: "IX_PayrollDetails_EmployeeId",
                 table: "PayrollDetails",
-                column: "EmployeeID");
+                column: "EmployeeId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_PerformanceDetails_EmployeeId",
+                name: "IX_PerformaceDetails_EmployeeId",
                 table: "PerformanceDetails",
-                column: "EmployeeId");
+                column: "EmployeeId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_ResignationDetails_EmployeeId",
                 table: "ResignationDetails",
-                column: "EmployeeId");
+                column: "EmployeeId",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
