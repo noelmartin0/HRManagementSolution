@@ -23,6 +23,7 @@
 
         public void AddEmployee(EmployeeDetail employee)
         {
+            
             _context.EmployeeDetails.Add(employee);
             _context.SaveChanges();
         }

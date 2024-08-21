@@ -5,12 +5,12 @@ namespace HRManagement.Models
     [Table("EmployeeTrainingDetails")]
     public class EmployeeTrainingDetail
     {
-        //[Key]
-        //public int SNo { get; set; }
+        [Key]
+        public int SNo { get; set; }
 
 
 
- 
+
         public int EmployeeId { get; set; }
         public EmployeeDetail EmployeeDetail { get; set; }
 
@@ -22,7 +22,7 @@ namespace HRManagement.Models
         [MinLength(5)]
         public string TrainingStatus { get; set; }
 
-        
+
     }
 
 }

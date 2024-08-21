@@ -11,7 +11,7 @@ namespace HRManagement.Models
         [Required]
         public string TrainingName { get; set; }
         
-        public ICollection<EmployeeTrainingDetail> EmployeeTrainingDetail { get; set; }
+       // public ICollection<EmployeeTrainingDetail> EmployeeTrainingDetail { get; set; }
         
 
     }

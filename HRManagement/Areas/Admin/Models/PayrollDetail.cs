@@ -28,7 +28,7 @@ namespace HRManagement.Models
         public decimal Netpay { get; set; }
 
        
-       public EmployeeDetail EmployeeDetail { get; set; }
+     //  public EmployeeDetail EmployeeDetail { get; set; }
 
 
     }
