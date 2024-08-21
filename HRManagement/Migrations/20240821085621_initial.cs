@@ -13,8 +13,7 @@ namespace HRManagement.Migrations
                 name: "DepartmentDetails",
                 columns: table => new
                 {
-                    DepartmentId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DepartmentId = table.Column<int>(type: "int", nullable: false),
                     DepartmentName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
@@ -26,8 +25,7 @@ namespace HRManagement.Migrations
                 name: "ResumeTrackingDetails",
                 columns: table => new
                 {
-                    ResumeID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ResumeID = table.Column<int>(type: "int", nullable: false),
                     ApplicantName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneNo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Qualification = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -44,8 +42,7 @@ namespace HRManagement.Migrations
                 name: "TrainingDetails",
                 columns: table => new
                 {
-                    TrainingId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TrainingId = table.Column<int>(type: "int", nullable: false),
                     TrainingName = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -57,8 +54,7 @@ namespace HRManagement.Migrations
                 name: "EmployeeDetails",
                 columns: table => new
                 {
-                    EmployeeId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EmployeeId = table.Column<int>(type: "int", nullable: false),
                     EmployeeName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Nationality = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
@@ -111,8 +107,7 @@ namespace HRManagement.Migrations
                 name: "LeaveDetails",
                 columns: table => new
                 {
-                    SNo = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SNo = table.Column<int>(type: "int", nullable: false),
                     EmployeeId = table.Column<int>(type: "int", nullable: false),
                     TotalDays = table.Column<int>(type: "int", nullable: false),
                     DaysTaken = table.Column<int>(type: "int", nullable: true),
@@ -133,8 +128,7 @@ namespace HRManagement.Migrations
                 name: "PayrollDetails",
                 columns: table => new
                 {
-                    PayrollID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PayrollID = table.Column<int>(type: "int", nullable: false),
                     EmployeeId = table.Column<int>(type: "int", nullable: false),
                     Basicpay = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Allowance = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
@@ -154,11 +148,10 @@ namespace HRManagement.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PerdormaceDetails",
+                name: "PerformanceDetails",
                 columns: table => new
                 {
-                    PerformanceId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PerformanceId = table.Column<int>(type: "int", nullable: false),
                     EmployeeId = table.Column<int>(type: "int", nullable: false),
                     DepartmentId = table.Column<int>(type: "int", nullable: false),
                     EvaluatorName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
@@ -166,9 +159,9 @@ namespace HRManagement.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PerdormaceDetails", x => x.PerformanceId);
+                    table.PrimaryKey("PK_PerformanceDetails", x => x.PerformanceId);
                     table.ForeignKey(
-                        name: "FK_PerdormaceDetails_EmployeeDetails_EmployeeId",
+                        name: "FK_PerformanceDetails_EmployeeDetails_EmployeeId",
                         column: x => x.EmployeeId,
                         principalTable: "EmployeeDetails",
                         principalColumn: "EmployeeId",
@@ -179,8 +172,7 @@ namespace HRManagement.Migrations
                 name: "ResignationDetails",
                 columns: table => new
                 {
-                    Sno = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Sno = table.Column<int>(type: "int", nullable: false),
                     EmployeeId = table.Column<int>(type: "int", nullable: false),
                     DepartmentId = table.Column<int>(type: "int", nullable: false),
                     Position = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
@@ -222,8 +214,8 @@ namespace HRManagement.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_PerdormaceDetails_EmployeeId",
-                table: "PerdormaceDetails",
+                name: "IX_PerformaceDetails_EmployeeId",
+                table: "PerformanceDetails",
                 column: "EmployeeId",
                 unique: true);
 
@@ -246,7 +238,7 @@ namespace HRManagement.Migrations
                 name: "PayrollDetails");
 
             migrationBuilder.DropTable(
-                name: "PerdormaceDetails");
+                name: "PerformanceDetails");
 
             migrationBuilder.DropTable(
                 name: "ResignationDetails");
