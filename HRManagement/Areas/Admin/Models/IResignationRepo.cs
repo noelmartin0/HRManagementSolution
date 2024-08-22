@@ -27,7 +27,7 @@
 
         }
 
-
+        //change you wanted
         public ResignationDetail GetResignationById(int id)
         {
             ResignationDetail r = _context.ResignationDetails.Find(id);
