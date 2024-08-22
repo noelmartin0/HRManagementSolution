@@ -214,7 +214,7 @@ namespace HRManagement.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_PerformaceDetails_EmployeeId",
+                name: "IX_PerformanceDetails_EmployeeId",
                 table: "PerformanceDetails",
                 column: "EmployeeId",
                 unique: true);

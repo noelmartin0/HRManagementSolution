@@ -1,17 +1,16 @@
 ﻿using HRManagement.Models;
 using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace HRManagement.Areas.Admin.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AdminController : ControllerBase
+    public class EmployeeController : ControllerBase
     {
 
         IEmployeeRepo _emp;
-        public AdminController(IEmployeeRepo repo)
+        public EmployeeController(IEmployeeRepo repo)
         {
             _emp = repo;
         }
