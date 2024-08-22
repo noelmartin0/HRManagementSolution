@@ -1,8 +1,10 @@
 ﻿namespace HRManagement.Models
 {
-    interface ILeaveRepo
+    public interface ILeaveRepo
     {
         void UpdateEmployeeLeaveDetail(int id, LeaveDetail leave);
+        LeaveDetail GetLeaveByEmployeeId(int empid);
+        LeaveDetail GetLeaveByLeaveId(int id);
     }
 
     public class LeaveRepo : ILeaveRepo
@@ -22,5 +24,17 @@
 
         }
 
+
+
+        LeaveDetail ILeaveRepo.GetLeaveByEmployeeId(int empid)
+        {
+            return _context.LeaveDetails.FirstOrDefault(e => e.EmployeeId == empid);
+            
+        }
+
+        LeaveDetail ILeaveRepo.GetLeaveByLeaveId(int id)
+        {
+           return _context.LeaveDetails.Find(id);
+        }
     }
 }

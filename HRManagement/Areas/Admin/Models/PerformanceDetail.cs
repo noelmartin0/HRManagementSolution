@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 namespace HRManagement.Models
 {
-    [Table("PerformaceDetails")]
+    [Table("PerformanceDetails")]
     public class PerformanceDetail
     {
        [Key]
