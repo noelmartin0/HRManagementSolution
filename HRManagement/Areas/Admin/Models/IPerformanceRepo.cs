@@ -1,10 +1,11 @@
 ﻿namespace HRManagement.Models
 {
-    interface IPerformanceRepo
+    public interface IPerformanceRepo
     {
         void AddEmployeePerformance(PerformanceDetail performance);
         void UpdateEmployeePerformance(int id, PerformanceDetail performance);
         PerformanceDetail GetPerformanceById(int id);
+        void DeleteEmployeePerformance(int id);
 
     }
 
@@ -37,8 +38,12 @@
             _context.SaveChanges();
         }
 
-
-
+        public void DeleteEmployeePerformance(int id)
+        {
+            PerformanceDetail p = _context.PerformanceDetails.Find(id);
+            _context.PerformanceDetails.Remove(p);
+            _context.SaveChanges();
+        }
     }
 }
 
