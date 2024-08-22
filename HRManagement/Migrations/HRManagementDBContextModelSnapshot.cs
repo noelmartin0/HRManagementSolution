@@ -108,6 +108,9 @@ namespace HRManagement.Migrations
                     b.Property<int>("TrainingId")
                         .HasColumnType("int");
 
+                    b.Property<int>("SNo")
+                        .HasColumnType("int");
+
                     b.Property<string>("TrainingStatus")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -209,7 +212,7 @@ namespace HRManagement.Migrations
                     b.HasIndex("EmployeeId")
                         .IsUnique();
 
-                    b.ToTable("PerdormaceDetails");
+                    b.ToTable("PerformanceDetails");
                 });
 
             modelBuilder.Entity("HRManagement.Models.ResignationDetail", b =>
@@ -231,6 +234,10 @@ namespace HRManagement.Migrations
 
                     b.Property<int>("ManagerID")
                         .HasColumnType("int");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Position")
                         .IsRequired()

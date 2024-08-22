@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HRManagement.Migrations
 {
     [DbContext(typeof(HRManagementDBContext))]
-    [Migration("20240821085621_initial")]
-    partial class initial
+    [Migration("20240822052050_intital")]
+    partial class intital
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -108,6 +108,9 @@ namespace HRManagement.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("TrainingId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SNo")
                         .HasColumnType("int");
 
                     b.Property<string>("TrainingStatus")
@@ -211,7 +214,7 @@ namespace HRManagement.Migrations
                     b.HasIndex("EmployeeId")
                         .IsUnique();
 
-                    b.ToTable("PerdormaceDetails");
+                    b.ToTable("PerformanceDetails");
                 });
 
             modelBuilder.Entity("HRManagement.Models.ResignationDetail", b =>
@@ -233,6 +236,10 @@ namespace HRManagement.Migrations
 
                     b.Property<int>("ManagerID")
                         .HasColumnType("int");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Position")
                         .IsRequired()

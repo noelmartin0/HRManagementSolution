@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HRManagement.Migrations
 {
-    public partial class initial : Migration
+    public partial class intital : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -84,6 +84,7 @@ namespace HRManagement.Migrations
                 {
                     EmployeeId = table.Column<int>(type: "int", nullable: false),
                     TrainingId = table.Column<int>(type: "int", nullable: false),
+                    SNo = table.Column<int>(type: "int", nullable: false),
                     TrainingStatus = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
@@ -178,7 +179,8 @@ namespace HRManagement.Migrations
                     Position = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     ManagerID = table.Column<int>(type: "int", nullable: false),
                     JoinDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ResignDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    ResignDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

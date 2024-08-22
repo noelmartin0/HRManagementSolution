@@ -10,7 +10,7 @@ namespace HRManagement.Models
         public int EmployeeId { get; set; }
 
         [StringLength(50)]
-        [MinLength(5)]
+        [MinLength(3)]
         [Required]
         public string EmployeeName { get; set; }
 
@@ -19,12 +19,12 @@ namespace HRManagement.Models
         public DateTime DateOfBirth { get; set; }
 
         [StringLength(50)]
-        [MinLength(5)]
+        [MinLength(3)]
         public string Nationality { get; set; }
 
 
         [StringLength(100)]
-        [MinLength(5)]
+        [MinLength(3)]
         public string Address { get; set; }
 
 
@@ -38,24 +38,24 @@ namespace HRManagement.Models
         public int? ManagerId { get; set; }
 
         [StringLength(50)]
-        [MinLength(5)]
+        [MinLength(3)]
         public string Status { get; set; }
 
 
         [StringLength(50)]
-        [MinLength(5)]
+        [MinLength(3)]
         public string Position { get; set; }
 
         [DataType(DataType.DateTime)]
         public DateTime JoiningDate { get; set; }
 
-//        [ForeignKey("DepartmentDetail")]
-        public int DepartmentId { get; set; } 
 
-        
+        public int DepartmentId { get; set; }
+
+
 
         //public DepartmentDetail DepartmentDetail { get; set; }
-        //public LeaveDetail LeaveDetail { get; set; }    
+        //public LeaveDetail LeaveDetail { get; set; }
         //public PayrollDetail PayrollDetail { get; set; }
         //public PerformanceDetail PerformanceDetail { get; set; }
         //public ResignationDetail ResignationDetail { get; set; }

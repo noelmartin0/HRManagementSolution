@@ -14,15 +14,15 @@ namespace HRManagement.Models
         public string Qualification { get; set; }
 
         [StringLength(50)]
-        [MinLength(5)]
+        [MinLength(3)]
         public string? Experience { get; set; }
 
         [StringLength(50)]
-        [MinLength(5)]
+        [MinLength(3)]
         public string? Specialization { get; set; }
 
         [StringLength(50)]
-        [MinLength(5)]
+        [MinLength(3)]
         public string? AreaOfInterest { get; set; }
     }
 }

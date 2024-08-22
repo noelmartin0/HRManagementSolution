@@ -15,14 +15,14 @@ namespace HRManagement.Models
        public int DepartmentId { get; set; }
 
         [StringLength(50)]
-        [MinLength(5)]
+        [MinLength(3)]
         public string EvaluatorName { get; set; }
 
         [Required]
         public int EvaluationPeriod { get; set; }
 
        
-       //public EmployeeDetail EmployeeDetail { get; set; }
+        //public EmployeeDetail EmployeeDetail { get; set; }
 
         
 

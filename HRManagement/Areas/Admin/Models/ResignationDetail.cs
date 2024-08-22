@@ -15,7 +15,7 @@ namespace HRManagement.Models
         public int DepartmentId { get; set; }
 
         [StringLength(50)]
-        [MinLength(5)]
+        [MinLength(3)]
         public string Position { get; set; }
 
         [Required]
@@ -27,8 +27,10 @@ namespace HRManagement.Models
         [DataType(DataType.DateTime)]
         public DateTime ResignDate { get; set; }
 
+        public string PhoneNumber { get; set; }
+
         // Navigation Properties
-       
-      // public EmployeeDetail EmployeeDetail { get; set; }
+
+        //public EmployeeDetail EmployeeDetail { get; set; }
     }
 }
