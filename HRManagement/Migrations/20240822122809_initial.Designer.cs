@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HRManagement.Migrations
 {
     [DbContext(typeof(HRManagementDBContext))]
-    [Migration("20240822052050_intital")]
-    partial class intital
+    [Migration("20240822122809_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -90,6 +90,10 @@ namespace HRManagement.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<string>("PreviousTrainingCertifications")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -142,7 +146,16 @@ namespace HRManagement.Migrations
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
+                    b.Property<int>("Holidays")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SickLeaves")
+                        .HasColumnType("int");
+
                     b.Property<int>("TotalDays")
+                        .HasColumnType("int");
+
+                    b.Property<int>("VacationDays")
                         .HasColumnType("int");
 
                     b.HasKey("SNo");
@@ -270,6 +283,10 @@ namespace HRManagement.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("AreaOfInterest")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Certifications")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 

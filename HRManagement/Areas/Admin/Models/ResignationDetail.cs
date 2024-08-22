@@ -8,7 +8,7 @@ namespace HRManagement.Models
     public class ResignationDetail
     {
         [Key]
-        public int Sno { get; set; }
+        public int Sno { get;private set; }
 
         // Foreign Key Property
         public int EmployeeId { get; set; }

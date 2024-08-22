@@ -6,7 +6,7 @@ namespace HRManagement.Models
     public class TrainingDetail
     {
         [Key]
-        public int TrainingId { get; set; }
+        public int TrainingId { get;private set; }
 
         [Required]
         public string TrainingName { get; set; }

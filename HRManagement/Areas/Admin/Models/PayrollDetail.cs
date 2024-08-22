@@ -7,17 +7,21 @@ namespace HRManagement.Models
     public class PayrollDetail
     {
         [Key]
-        public int PayrollID { get; set; }
+        public int PayrollID { get;private set; }
         [Required]
      
         public int EmployeeId { get; set; }
 
         [DataType(DataType.Currency)]
+        [Range(0, double.MaxValue, ErrorMessage = "Basic pay must be a positive value.")]
         public decimal Basicpay { get; set; }
 
+        [Range(0, double.MaxValue, ErrorMessage = "Allowance must be a positive value.")]
         [DataType(DataType.Currency)]
         public decimal Allowance { get; set; }
 
+
+        [Range(0, double.MaxValue, ErrorMessage = "Deduction must be a positive value.")]
         [DataType(DataType.Currency)]
         public decimal Deduction { get; set; }
 
@@ -26,6 +30,13 @@ namespace HRManagement.Models
 
         [DataType(DataType.Currency)]
         public decimal Netpay { get; private set; }
+
+        public void SetPay()
+        {
+            Basicpay = 15000;
+            Allowance = 10000;
+            Deduction = 1500;
+        }
         public void CalculatePay()
         {
             Grosspay = Basicpay + Allowance;

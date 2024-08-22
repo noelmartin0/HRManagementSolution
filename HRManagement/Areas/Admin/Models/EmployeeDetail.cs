@@ -7,7 +7,7 @@ namespace HRManagement.Models
     public class EmployeeDetail
     {
         [Key]
-        public int EmployeeId { get; set; }
+        public int EmployeeId { get;private set; }
 
         [StringLength(50)]
         [MinLength(3)]
@@ -52,6 +52,9 @@ namespace HRManagement.Models
 
         public int DepartmentId { get; set; }
 
+        [StringLength(50)]
+        [MinLength(3)]
+        public string? PreviousTrainingCertifications { get; set; }
 
 
         //public DepartmentDetail DepartmentDetail { get; set; }

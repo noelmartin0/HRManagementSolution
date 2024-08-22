@@ -6,7 +6,7 @@ namespace HRManagement.Models
     public class PerformanceDetail
     {
        [Key]
-       public int PerformanceId { get; set; }
+       public int PerformanceId { get; private set; }
  
 
         public int EmployeeId { get; set; }   

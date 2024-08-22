@@ -88,6 +88,10 @@ namespace HRManagement.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<string>("PreviousTrainingCertifications")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -140,7 +144,16 @@ namespace HRManagement.Migrations
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
+                    b.Property<int>("Holidays")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SickLeaves")
+                        .HasColumnType("int");
+
                     b.Property<int>("TotalDays")
+                        .HasColumnType("int");
+
+                    b.Property<int>("VacationDays")
                         .HasColumnType("int");
 
                     b.HasKey("SNo");
@@ -268,6 +281,10 @@ namespace HRManagement.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("AreaOfInterest")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Certifications")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 

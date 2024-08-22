@@ -5,7 +5,7 @@ namespace HRManagement.Models
     public class ResumeTrackingDetail
     {
         [Key]
-        public int ResumeID { get; set; }
+        public int ResumeID { get;private set; }
         [Required]
         public string ApplicantName { get; set;}
         [Required]
@@ -24,5 +24,9 @@ namespace HRManagement.Models
         [StringLength(50)]
         [MinLength(3)]
         public string? AreaOfInterest { get; set; }
+
+        [StringLength(50)]
+        [MinLength(3)]
+        public string? Certifications { get; set; }
     }
 }

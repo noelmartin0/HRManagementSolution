@@ -7,7 +7,7 @@ namespace HRManagement.Models
     public class DepartmentDetail
     {
         [Key]
-        public int DepartmentId { get; set; }
+        public int DepartmentId { get;private set; }
         [Required]
         [StringLength(50)]
         public string DepartmentName { get; set; }

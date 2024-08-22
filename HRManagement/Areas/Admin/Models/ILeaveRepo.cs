@@ -19,9 +19,12 @@
         public void UpdateEmployeeLeaveDetail(int id, LeaveDetail leave)
         {
             LeaveDetail l = _context.LeaveDetails.Find(id);
-            l.TotalDays = leave.TotalDays;
+            l.SickLeaves = leave.SickLeaves;
+            l.Holidays = leave.Holidays;
+            l.VacationDays = leave.VacationDays;
+            l.TotalDays = l.SickLeaves + l.Holidays + l.VacationDays;
             l.DaysTaken = leave.DaysTaken;
-            l.DaysRemaining = l.TotalDays - l.DaysTaken;
+            l.CalculateDays();
             _context.SaveChanges();
 
         }
@@ -42,9 +45,12 @@
         public void UpdateByEmployeeId(int empid,LeaveDetail leave)
         {
             LeaveDetail l = _context.LeaveDetails.FirstOrDefault(e => e.EmployeeId == empid);
-            l.TotalDays = leave.TotalDays;  
+            l.SickLeaves = leave.SickLeaves;
+            l.Holidays = leave.Holidays;
+            l.VacationDays = leave.VacationDays;
+            l.TotalDays = l.SickLeaves + l.Holidays + l.VacationDays;
             l.DaysTaken = leave.DaysTaken;
-            l.DaysRemaining = l.TotalDays - l.DaysTaken;
+            l.CalculateDays();
             _context.SaveChanges();
         }
 
