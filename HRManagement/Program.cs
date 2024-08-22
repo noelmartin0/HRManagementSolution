@@ -1,3 +1,4 @@
+using HRManagement.Areas.Admin.Models;
 using HRManagement.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +15,7 @@ builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddScoped<IEmployeeRepo, EmployeeRepo>();
+builder.Services.AddScoped<IDepartmentRepo, DepartmentRepo>();
 builder.Services.AddScoped<IPayrollRepo, PayrollRepo>();
 builder.Services.AddScoped<ILeaveRepo, LeaveRepo>();
 builder.Services.AddScoped<IPerformanceRepo, PerformanceRepo>();

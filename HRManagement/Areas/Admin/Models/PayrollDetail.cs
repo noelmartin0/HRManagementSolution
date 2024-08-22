@@ -22,13 +22,19 @@ namespace HRManagement.Models
         public decimal Deduction { get; set; }
 
         [DataType(DataType.Currency)]
-        public decimal Grosspay { get; set; }
+        public decimal Grosspay { get; private set; }
 
         [DataType(DataType.Currency)]
-        public decimal Netpay { get; set; }
+        public decimal Netpay { get; private set; }
+        public void CalculatePay()
+        {
+            Grosspay = Basicpay + Allowance;
+            Netpay = Grosspay - Deduction;
+        }
 
-       
-     //  public EmployeeDetail EmployeeDetail { get; set; }
+
+
+        //  public EmployeeDetail EmployeeDetail { get; set; }
 
 
     }

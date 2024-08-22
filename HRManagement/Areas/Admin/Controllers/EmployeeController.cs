@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 
 
+
 namespace HRManagement.Areas.Admin.Controllers
 {
     [Route("api/[controller]")]

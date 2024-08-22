@@ -1,10 +1,13 @@
 ﻿namespace HRManagement.Models
 {
-    interface IPayrollRepo
+    public interface IPayrollRepo
     {
         void AddEmployeePayroll(PayrollDetail payroll);
-        void UpdateEmployeePayroll(int id, PayrollDetail payroll);
+        void UpdateEmployeePayroll(int empid, PayrollDetail payroll);
         PayrollDetail GetPayrollByID(int id);
+        PayrollDetail GetPayrollByEmpID(int empid);
+        List<PayrollDetail> GetAllPayrolls();
+        void DeleteEmployeePayroll(int id);
     }
 
     public class PayrollRepo : IPayrollRepo
@@ -18,24 +21,55 @@
 
         public void AddEmployeePayroll(PayrollDetail payroll)
         {
+            payroll.CalculatePay();
             _context.PayrollDetails.Add(payroll);
             _context.SaveChanges();
         }
 
-        public void UpdateEmployeePayroll(int id, PayrollDetail payroll)
+        public void DeleteEmployeePayroll(int id)
         {
-            PayrollDetail e = _context.PayrollDetails.Find(id);
-            e.Basicpay = payroll.Basicpay;
-            e.Allowance = payroll.Allowance;
-            e.Deduction = payroll.Deduction;
+           PayrollDetail p = _context.PayrollDetails.Find(id);
+            _context.PayrollDetails.Remove(p);
             _context.SaveChanges();
         }
 
-        PayrollDetail IPayrollRepo.GetPayrollByID(int id)
+        public List<PayrollDetail> GetAllPayrolls()
         {
-            PayrollDetail m = _context.PayrollDetails.Find(id);
-            return m;
+            return _context.PayrollDetails.ToList();
         }
+
+        public PayrollDetail GetPayrollByEmpID(int empid)
+        {
+            PayrollDetail e = _context.PayrollDetails.FirstOrDefault(e => e.EmployeeId == empid);
+            return e;
+        }
+
+        public PayrollDetail GetPayrollByID(int id)
+        {
+            PayrollDetail e = _context.PayrollDetails.Find(id);
+            return e;
+        }
+
+        public void UpdateEmployeePayroll(int empid, PayrollDetail payroll)
+        {
+            var existingPayroll = _context.PayrollDetails.FirstOrDefault(e => e.EmployeeId == empid);
+            if (existingPayroll == null)
+            {
+                throw new InvalidOperationException($"No payroll details found for Employee ID {empid}");
+            }
+
+            // Update only the properties that can be updated
+            existingPayroll.Basicpay = payroll.Basicpay;
+            existingPayroll.Allowance = payroll.Allowance;
+            existingPayroll.Deduction = payroll.Deduction;
+
+            // Recalculate Grosspay and Netpay
+            existingPayroll.CalculatePay();
+
+            _context.SaveChanges();
+        }
+
+        
 
 
     }
