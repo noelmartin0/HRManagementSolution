@@ -48,6 +48,7 @@ namespace HRManagement.Areas.Admin.Controllers
 
         }
 
+
         // DELETE api/<AdminController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)

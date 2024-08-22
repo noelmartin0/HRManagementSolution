@@ -55,5 +55,13 @@ namespace HRManagement.Areas.Admin.Controllers
             _repo.DeleteEmployeePayroll(id);
 
         }
+
+        [HttpDelete("Employee/{id}")]
+        public void DeleteByEmpID(int id)
+        {
+            _repo.DeletePayrollByEmpID(id);
+
+        }
+
     }
 }

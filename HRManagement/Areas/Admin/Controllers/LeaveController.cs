@@ -27,10 +27,10 @@ namespace HRManagement.Areas.Admin.Controllers
         }
 
 
-        [HttpGet("Employee/{id}")]
-        public LeaveDetail GetByEmpId(int id)
+        [HttpGet("Employee/{empid}")]
+        public LeaveDetail GetByEmpId(int empid)
         {
-            return _emp.GetLeaveByEmployeeId(id);
+            return _emp.GetLeaveByEmployeeId(empid);
         }
 
 
@@ -38,8 +38,9 @@ namespace HRManagement.Areas.Admin.Controllers
 
         // POST api/<LeaveController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] LeaveDetail leave)
         {
+            _emp.AddEmployeeLeave(leave);
         }
 
         // PUT api/<LeaveController>/5
@@ -48,6 +49,13 @@ namespace HRManagement.Areas.Admin.Controllers
         {
             _emp.UpdateEmployeeLeaveDetail(id, value);
             
+        }
+
+        [HttpPut("Employee/{empid}")]
+        public void PutByEmpID(int empid, [FromBody] LeaveDetail value)
+        {
+            _emp.UpdateByEmployeeId(empid, value);
+
         }
 
         // DELETE api/<LeaveController>/5

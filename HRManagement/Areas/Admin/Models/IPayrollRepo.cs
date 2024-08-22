@@ -6,8 +6,12 @@
         void UpdateEmployeePayroll(int empid, PayrollDetail payroll);
         PayrollDetail GetPayrollByID(int id);
         PayrollDetail GetPayrollByEmpID(int empid);
+
         List<PayrollDetail> GetAllPayrolls();
         void DeleteEmployeePayroll(int id);
+
+        void DeletePayrollByEmpID(int empid);
+
     }
 
     public class PayrollRepo : IPayrollRepo
@@ -69,9 +73,14 @@
             _context.SaveChanges();
         }
 
-        
+        public void DeletePayrollByEmpID(int empid)
+        {
+            var payroll = _context.PayrollDetails.FirstOrDefault(e => e.EmployeeId == empid);
+            _context.PayrollDetails.Remove(payroll);
+            _context.SaveChanges();
+            
 
-
+        }
     }
 }
 

@@ -23,6 +23,16 @@ namespace HRManagement.Areas.Admin.Controllers
             return _emp.GetPerformanceById(id);
         }
 
+        [HttpGet("Employee/{empid}")]
+        public PerformanceDetail GetByEmpId(int empid)
+        {
+            return _emp.GetPerformanceByEmpID(empid);
+        }
+
+
+
+
+
         // POST api/<PerformanceController>
         [HttpPost]
         public void Post([FromBody] PerformanceDetail value)

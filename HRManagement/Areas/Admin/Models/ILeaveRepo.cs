@@ -5,6 +5,8 @@
         void UpdateEmployeeLeaveDetail(int id, LeaveDetail leave);
         LeaveDetail GetLeaveByEmployeeId(int empid);
         LeaveDetail GetLeaveByLeaveId(int id);
+        void AddEmployeeLeave(LeaveDetail leave);
+        void UpdateByEmployeeId(int empid,LeaveDetail leave);
     }
 
     public class LeaveRepo : ILeaveRepo
@@ -35,6 +37,21 @@
         LeaveDetail ILeaveRepo.GetLeaveByLeaveId(int id)
         {
            return _context.LeaveDetails.Find(id);
+        }
+
+        public void UpdateByEmployeeId(int empid,LeaveDetail leave)
+        {
+            LeaveDetail l = _context.LeaveDetails.FirstOrDefault(e => e.EmployeeId == empid);
+            l.TotalDays = leave.TotalDays;  
+            l.DaysTaken = leave.DaysTaken;
+            l.DaysRemaining = l.TotalDays - l.DaysTaken;
+            _context.SaveChanges();
+        }
+
+        void ILeaveRepo.AddEmployeeLeave(LeaveDetail leave)
+        {
+            _context.LeaveDetails.Add(leave);
+            _context.SaveChanges(); 
         }
     }
 }
