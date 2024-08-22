@@ -19,7 +19,7 @@ namespace HRManagement.Models
         public string Position { get; set; }
 
         [Required]
-        public int ManagerID { get; set; }
+        public int? ManagerID { get; set; }
 
         [DataType(DataType.DateTime)]
         public DateTime JoinDate { get; set; }

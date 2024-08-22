@@ -7,7 +7,8 @@
         void AddEmployee(EmployeeDetail employee);
         void UpdateEmployee(int id, EmployeeDetail employee);
         void DeleteEmployee(int id);
-       
+        public void UpdateEmployeeStatus(int employeeId, string newStatus);
+
         //havent written training functions
     }
 
@@ -74,7 +75,41 @@
             _context.SaveChanges();
         }
 
-       
+        public void UpdateEmployeeStatus(int employeeId, string newStatus)
+        {
+            EmployeeDetail employee = _context.EmployeeDetails.Find(employeeId);
+            if (employee == null)
+            {
+                throw new InvalidOperationException("Employee not found.");
+            }
+            if (employee.Status != newStatus)
+            {
+                employee.Status = newStatus;
+                // Check if status is being set to "Resigned"
+                if (newStatus == "Resigned")
+                {
+                    CreateResignationDetail(employee);
+                }
+                _context.SaveChanges();
+            }
+        }
+
+        private void CreateResignationDetail(EmployeeDetail employee)
+        {
+            ResignationDetail resignationDetail = new ResignationDetail
+            {
+                EmployeeId = employee.EmployeeId,
+                DepartmentId = employee.DepartmentId, // Assuming this is stored in EmployeeDetail
+                Position = employee.Position,
+                ManagerID = employee.ManagerId,
+                JoinDate = employee.JoiningDate,
+                ResignDate = DateTime.Now, // Current date as the resignation date
+                PhoneNumber = employee.PhoneNumber
+            };
+
+            _context.ResignationDetails.Add(resignationDetail);
+            _context.SaveChanges();
+        }
 
 
 
@@ -83,6 +118,7 @@
 
 
 
-      
+
+
     }
 }
