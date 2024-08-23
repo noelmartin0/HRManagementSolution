@@ -19,17 +19,42 @@
         public void UpdateEmployeeLeaveDetail(int id, LeaveDetail leave)
         {
             LeaveDetail l = _context.LeaveDetails.Find(id);
-            l.SickLeaves = leave.SickLeaves;
-            l.Holidays = leave.Holidays;
-            l.VacationDays = leave.VacationDays;
-            l.TotalDays = l.SickLeaves + l.Holidays + l.VacationDays;
-            l.DaysTaken = leave.DaysTaken;
-            l.CalculateDays();
-            _context.SaveChanges();
-            
-        }
+            int? sl = leave.SickLeaves;
+            int? h = leave.Holidays;
+            int? v = leave.VacationDays;
 
-        
+            if (l != null)
+            {
+                // Update only the fields that are not null or have been changed
+                if (sl != 0)
+                {
+                    l.SickLeaves = sl.Value;
+                }
+
+                if (h != 0)
+                {
+                    l.Holidays = h.Value;
+                }
+
+                if (v != 0)
+                {
+                    l.VacationDays = v.Value;
+                }
+
+                if (leave.DaysTaken != 0)
+                {
+                    l.DaysTaken = leave.DaysTaken.Value;
+                }
+
+                // Recalculate the remaining leave days
+                l.CalculateDays();
+
+                // Save changes to the database
+                _context.SaveChanges();
+
+            }
+
+        }
 
         LeaveDetail ILeaveRepo.GetLeaveByEmployeeId(int empid)
         {
@@ -42,17 +67,45 @@
            return _context.LeaveDetails.Find(id);
         }
 
-        public void UpdateByEmployeeId(int empid,LeaveDetail leave)
+        public void UpdateByEmployeeId(int empid, LeaveDetail leave)
         {
+            // Fetch the LeaveDetail record for the specified EmployeeId
             LeaveDetail l = _context.LeaveDetails.FirstOrDefault(e => e.EmployeeId == empid);
-            l.SickLeaves = leave.SickLeaves;
-            l.Holidays = leave.Holidays;
-            l.VacationDays = leave.VacationDays;
-            l.TotalDays = l.SickLeaves + l.Holidays + l.VacationDays;
-            l.DaysTaken = leave.DaysTaken;
-            l.CalculateDays();
-            _context.SaveChanges();
+            int? sl = leave.SickLeaves;
+            int? h = leave.Holidays;
+            int? v = leave.VacationDays;
+
+            if (l != null)
+            {
+                // Update only the fields that are not null or have been changed
+                if (sl!=0)
+                {
+                    l.SickLeaves = sl.Value;
+                }
+
+                if (h!=0)
+                {
+                    l.Holidays = h.Value;
+                }
+
+                if (v!=0)
+                {
+                    l.VacationDays = v.Value;
+                }
+
+                if (leave.DaysTaken!=0)
+                {
+                    l.DaysTaken = leave.DaysTaken.Value;
+                }
+
+                // Recalculate the remaining leave days
+                l.CalculateDays();
+
+                // Save changes to the database
+                _context.SaveChanges();
+            }
         }
+
 
         void ILeaveRepo.AddEmployeeLeave(LeaveDetail leave)
         {
@@ -61,3 +114,56 @@
         }
     }
 }
+
+
+
+/*
+ public void UpdateByEmployeeId(int empid, LeaveDetail leave)
+{
+    // Fetch the LeaveDetail record for the specified EmployeeId
+    LeaveDetail l = _context.LeaveDetails.FirstOrDefault(e => e.EmployeeId == empid);
+
+    if (l != null)
+    {
+        // Update only the fields that are not null or have been changed
+        if (leave.SickLeaves.HasValue)
+        {
+            l.SickLeaves = leave.SickLeaves.Value;
+        }
+
+        if (leave.Holidays.HasValue)
+        {
+            l.Holidays = leave.Holidays.Value;
+        }
+
+        if (leave.VacationDays.HasValue)
+        {
+            l.VacationDays = leave.VacationDays.Value;
+        }
+
+        if (leave.DaysTaken.HasValue)
+        {
+            l.DaysTaken = leave.DaysTaken.Value;
+        }
+
+        // Recalculate the remaining leave days
+        l.CalculateDays();
+
+        // Save changes to the database
+        _context.SaveChanges();
+    }
+}
+
+ 
+     public void UpdateByEmployeeId(int empid,LeaveDetail leave)
+        {
+            LeaveDetail l = _context.LeaveDetails.FirstOrDefault(e => e.EmployeeId == empid);
+            l.SickLeaves = leave.SickLeaves;
+            l.Holidays = leave.Holidays;
+            l.VacationDays = leave.VacationDays;
+            l.DaysTaken = leave.DaysTaken;
+            l.CalculateDays();
+            _context.SaveChanges();
+        }
+ 
+ */
