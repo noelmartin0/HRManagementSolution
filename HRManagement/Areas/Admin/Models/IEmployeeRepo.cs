@@ -26,6 +26,7 @@
         {
             
             _context.EmployeeDetails.Add(employee);
+            AddEmployeePayroll(employee);
             _context.SaveChanges();
         }
 
@@ -115,6 +116,15 @@
             _context.SaveChanges();
         }
 
+        private void AddEmployeePayroll(EmployeeDetail employee)
+        {
+            PayrollDetail payrollDetail = new PayrollDetail();
+            payrollDetail.EmployeeId = employee.EmployeeId;
+            payrollDetail.SetPay();
+            payrollDetail.CalculatePay();
+            _context.PayrollDetails.Add(payrollDetail);
+            _context.SaveChanges();
+        }
 
 
 
@@ -123,6 +133,7 @@
 
 
 
+  
 
     }
 }

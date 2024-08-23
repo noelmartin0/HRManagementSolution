@@ -12,6 +12,10 @@ namespace HRManagement.Models
 
         // Foreign Key Property
         public int EmployeeId { get; set; }
+        [StringLength(50)]
+        [MinLength(3)]
+        [Required]
+        public string EmployeeName { get; set; }
         public int DepartmentId { get; set; }
 
         [StringLength(50)]
@@ -31,6 +35,6 @@ namespace HRManagement.Models
 
         // Navigation Properties
 
-        //public EmployeeDetail EmployeeDetail { get; set; }
+        public EmployeeDetail EmployeeDetail { get; set; }
     }
 }

@@ -104,23 +104,7 @@ namespace HRManagement.Migrations
                     b.ToTable("EmployeeDetails");
                 });
 
-        //    protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<EmployeeTrainingDetail>()
-        //        .HasKey(et => new { et.EmployeeId, et.TrainingId });
-
-        //    modelBuilder.Entity<EmployeeTrainingDetail>()
-        //        .HasOne(et => et.EmployeeDetail)
-        //        .WithMany(e => e.EmployeeTrainingDetails)
-        //        .HasForeignKey(et => et.EmployeeId);
-
-        //    modelBuilder.Entity<EmployeeTrainingDetail>()
-        //        .HasOne(et => et.TrainingDetail)
-        //        .WithMany(t => t.EmployeeTrainingDetails)
-        //        .HasForeignKey(et => et.TrainingId);
-        //}
-
-        modelBuilder.Entity("HRManagement.Models.EmployeeTrainingDetail", b =>
+            modelBuilder.Entity("HRManagement.Models.EmployeeTrainingDetail", b =>
                 {
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
@@ -258,10 +242,16 @@ namespace HRManagement.Migrations
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
+                    b.Property<string>("EmployeeName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<DateTime>("JoinDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ManagerID")
+                    b.Property<int?>("ManagerID")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("PhoneNumber")
