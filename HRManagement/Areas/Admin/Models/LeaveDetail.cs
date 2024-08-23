@@ -30,6 +30,7 @@ namespace HRManagement.Models
             SickLeaves = 8;
             VacationDays = 6;
             Holidays = 12;
+            DaysTaken = 0;
             TotalDays = SickLeaves + VacationDays + Holidays;
         }
 

@@ -26,10 +26,10 @@
             l.DaysTaken = leave.DaysTaken;
             l.CalculateDays();
             _context.SaveChanges();
-
+            
         }
 
-
+        
 
         LeaveDetail ILeaveRepo.GetLeaveByEmployeeId(int empid)
         {
