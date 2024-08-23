@@ -104,7 +104,23 @@ namespace HRManagement.Migrations
                     b.ToTable("EmployeeDetails");
                 });
 
-            modelBuilder.Entity("HRManagement.Models.EmployeeTrainingDetail", b =>
+        //    protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<EmployeeTrainingDetail>()
+        //        .HasKey(et => new { et.EmployeeId, et.TrainingId });
+
+        //    modelBuilder.Entity<EmployeeTrainingDetail>()
+        //        .HasOne(et => et.EmployeeDetail)
+        //        .WithMany(e => e.EmployeeTrainingDetails)
+        //        .HasForeignKey(et => et.EmployeeId);
+
+        //    modelBuilder.Entity<EmployeeTrainingDetail>()
+        //        .HasOne(et => et.TrainingDetail)
+        //        .WithMany(t => t.EmployeeTrainingDetails)
+        //        .HasForeignKey(et => et.TrainingId);
+        //}
+
+        modelBuilder.Entity("HRManagement.Models.EmployeeTrainingDetail", b =>
                 {
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
