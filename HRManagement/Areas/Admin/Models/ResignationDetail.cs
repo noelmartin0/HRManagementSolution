@@ -10,7 +10,7 @@ namespace HRManagement.Models
         [Key]
         public int Sno { get;private set; }
 
-        // Foreign Key Property
+        
         public int EmployeeId { get; set; }
         [StringLength(50)]
         [MinLength(3)]
