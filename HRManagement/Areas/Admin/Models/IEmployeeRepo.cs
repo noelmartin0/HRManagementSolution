@@ -27,7 +27,6 @@
             
             _context.EmployeeDetails.Add(employee);
             _context.SaveChanges();
-
             AddEmployeePayroll(employee.EmployeeId);
             AddEmployeeLeave(employee.EmployeeId);
 
