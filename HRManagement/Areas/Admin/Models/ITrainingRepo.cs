@@ -86,8 +86,21 @@ namespace HRManagement.Areas.Admin.Models
             List<TrainingDetail> trainings = _context.TrainingDetails
                 .Where(t => trainingIds.Contains(t.TrainingId))
                 .ToList();
+            if (trainings.Count == 2)
+            {
+                UpdatePayroll(empid);
+            }
+           
 
             return trainings;
+        }
+
+        private void UpdatePayroll(int empid)
+        {
+            PayrollDetail payroll = _context.PayrollDetails.FirstOrDefault(e=> e.EmployeeId == empid);
+            payroll.Basicpay = payroll.Basicpay *(decimal) 0.15 + payroll.Basicpay;
+            payroll.CalculatePay();
+            _context.SaveChanges();
         }
     }
 }

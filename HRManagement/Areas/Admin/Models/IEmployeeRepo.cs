@@ -26,8 +26,9 @@
         {
             
             _context.EmployeeDetails.Add(employee);
-            AddEmployeePayroll(employee);
             _context.SaveChanges();
+            AddEmployeePayroll(employee);
+            
         }
 
 
