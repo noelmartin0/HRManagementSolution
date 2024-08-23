@@ -72,6 +72,10 @@
             e.ManagerId = employee.ManagerId;
             e.Status = employee.Status;
             e.Position = employee.Position;
+            if(e.Status == "Resigned")
+            {
+                CreateResignationDetail(employee);
+            }
             _context.SaveChanges();
         }
 
