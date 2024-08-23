@@ -9,7 +9,7 @@
         void DeleteEmployee(int id);
         public void UpdateEmployeeStatus(int employeeId, string newStatus);
 
-        //havent written training functions
+        
     }
 
 
@@ -89,7 +89,7 @@
             if (employee.Status != newStatus)
             {
                 employee.Status = newStatus;
-                // Check if status is being set to "Resigned"
+               
                 if (newStatus == "Resigned")
                 {
                     CreateResignationDetail(employee);
@@ -103,11 +103,12 @@
             ResignationDetail resignationDetail = new ResignationDetail
             {
                 EmployeeId = employee.EmployeeId,
-                DepartmentId = employee.DepartmentId, // Assuming this is stored in EmployeeDetail
+                EmployeeName = employee.EmployeeName,
+                DepartmentId = employee.DepartmentId, 
                 Position = employee.Position,
                 ManagerID = employee.ManagerId,
                 JoinDate = employee.JoiningDate,
-                ResignDate = DateTime.Now, // Current date as the resignation date
+                ResignDate = DateTime.Now, 
                 PhoneNumber = employee.PhoneNumber
             };
 

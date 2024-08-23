@@ -62,12 +62,12 @@
                 throw new InvalidOperationException($"No payroll details found for Employee ID {empid}");
             }
 
-            // Update only the properties that can be updated
+           
             existingPayroll.Basicpay = payroll.Basicpay;
             existingPayroll.Allowance = payroll.Allowance;
             existingPayroll.Deduction = payroll.Deduction;
 
-            // Recalculate Grosspay and Netpay
+            
             existingPayroll.CalculatePay();
 
             _context.SaveChanges();
