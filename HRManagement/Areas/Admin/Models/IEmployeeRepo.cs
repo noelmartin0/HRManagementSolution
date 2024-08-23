@@ -27,16 +27,12 @@
             
             _context.EmployeeDetails.Add(employee);
             _context.SaveChanges();
-            AddEmployeePayroll(employee);
-            
+            AddEmployeePayroll(employee.EmployeeId);
+            AddEmployeeLeave(employee.EmployeeId);
+
         }
 
-
-
-
-
-     
-
+      
 
         public void DeleteEmployee(int id)
         {
@@ -74,12 +70,16 @@
             e.ManagerId = employee.ManagerId;
             e.Status = employee.Status;
             e.Position = employee.Position;
+            e.JoiningDate = employee.JoiningDate;
+            e.DepartmentId = employee.DepartmentId;
+            e.PreviousTrainingCertifications = employee.PreviousTrainingCertifications;
             if(e.Status == "Resigned")
             {
                 CreateResignationDetail(employee);
             }
             _context.SaveChanges();
         }
+
 
         public void UpdateEmployeeStatus(int employeeId, string newStatus)
         {
@@ -113,15 +113,15 @@
                 ResignDate = DateTime.Now, 
                 PhoneNumber = employee.PhoneNumber
             };
-
+            
             _context.ResignationDetails.Add(resignationDetail);
             _context.SaveChanges();
         }
 
-        private void AddEmployeePayroll(EmployeeDetail employee)
+        private void AddEmployeePayroll(int empId)
         {
             PayrollDetail payrollDetail = new PayrollDetail();
-            payrollDetail.EmployeeId = employee.EmployeeId;
+            payrollDetail.EmployeeId = empId;
             payrollDetail.SetPay();
             payrollDetail.CalculatePay();
             _context.PayrollDetails.Add(payrollDetail);
@@ -129,13 +129,21 @@
         }
 
 
+        private void AddEmployeeLeave(int empId)
+        {
+            LeaveDetail leaveDetail = new LeaveDetail();
+            leaveDetail.EmployeeId = empId;
+            leaveDetail.SetDays();
+            leaveDetail.CalculateDays();
+            _context.SaveChanges();
+
+        }
 
 
 
 
 
 
-  
 
     }
 }
