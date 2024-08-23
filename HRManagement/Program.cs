@@ -19,7 +19,7 @@ builder.Services.AddScoped<IDepartmentRepo, DepartmentRepo>();
 builder.Services.AddScoped<IPayrollRepo, PayrollRepo>();
 builder.Services.AddScoped<ILeaveRepo, LeaveRepo>();
 builder.Services.AddScoped<IPerformanceRepo, PerformanceRepo>();
-builder.Services.AddScoped<IResumeRepo, ResumeTrackingRepo>();
+builder.Services.AddScoped<ITrainingRepo, TrainingRepo>();
 builder.Services.AddScoped<IResignationRepo, ResignationRepo>();
 
 
