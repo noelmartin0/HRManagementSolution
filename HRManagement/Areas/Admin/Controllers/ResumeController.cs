@@ -52,5 +52,11 @@ namespace HRManagement.Areas.Admin.Controllers
         {
             _emp.DeleteResume(id);
         }
+
+        [HttpPost("Hire/{id}")]
+        public void Hire(int id, [FromBody] EmployeeDetail emp)
+        {
+            _emp.HireEmployee(id, emp);
+        }
     }
 }

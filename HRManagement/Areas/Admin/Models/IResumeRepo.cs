@@ -12,6 +12,8 @@ namespace HRManagement.Areas.Admin.Models
             void DeleteResume(int id);
             void UpdateResume(int id, ResumeTrackingDetail resume);
 
+            void HireEmployee(int id, EmployeeDetail employeefromPostMethod);
+
             //Write the promote() function
      }
 
@@ -50,7 +52,31 @@ namespace HRManagement.Areas.Admin.Models
                 return m;
             }
 
-            public void UpdateResume(int id, ResumeTrackingDetail resume)
+        public void HireEmployee(int id,EmployeeDetail employeefromPostMethod)
+        {
+            ResumeTrackingDetail resume = _context.ResumeTrackingDetails.Find(id);
+            EmployeeDetail emp = new EmployeeDetail();
+            emp.EmployeeName = resume.ApplicantName;
+            emp.DateOfBirth = resume.DateOfBirth;
+            emp.Address = resume.Address;
+            emp.Nationality = resume.Nationality;
+            emp.PhoneNumber = resume.PhoneNo;
+            emp.Email = resume.Email;
+            emp.DepartmentId = employeefromPostMethod.DepartmentId;
+            emp.ManagerId = employeefromPostMethod.ManagerId;
+            emp.Status = employeefromPostMethod.Status;
+            emp.JoiningDate = employeefromPostMethod.JoiningDate;
+            emp.Position = resume.ApplyingFor;
+            emp.PreviousTrainingCertifications = resume.Certifications;
+            _context.EmployeeDetails.Add(emp);
+            _context.SaveChanges();
+            AddEmployeeLeave(emp.EmployeeId);
+            AddEmployeePayroll(emp.EmployeeId);
+            _context.ResumeTrackingDetails.Remove(resume);
+            _context.SaveChanges();
+        }
+
+        public void UpdateResume(int id, ResumeTrackingDetail resume)
             {
                 ResumeTrackingDetail r = _context.ResumeTrackingDetails.Find(id);
                 r.ApplicantName = resume.ApplicantName;
@@ -68,8 +94,32 @@ namespace HRManagement.Areas.Admin.Models
                 _context.SaveChanges();
             }
 
+        private void AddEmployeePayroll(int empId)
+        {
+            PayrollDetail payrollDetail = new PayrollDetail();
+            payrollDetail.EmployeeId = empId;
+            payrollDetail.SetPay();
+            payrollDetail.CalculatePay();
+            _context.PayrollDetails.Add(payrollDetail);
+            _context.SaveChanges();
+        }
+
+
+        private void AddEmployeeLeave(int empId)
+        {
+            LeaveDetail leaveDetail = new LeaveDetail();
+            leaveDetail.EmployeeId = empId;
+            leaveDetail.SetDays();
+            leaveDetail.CalculateDays();
+            _context.LeaveDetails.Add(leaveDetail);
+
+            _context.SaveChanges();
 
         }
+
+
+
+    }
 
    }
 
