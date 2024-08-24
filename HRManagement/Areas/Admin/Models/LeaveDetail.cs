@@ -31,11 +31,13 @@ namespace HRManagement.Models
             VacationDays = 6;
             Holidays = 12;
             DaysTaken = 0;
-            TotalDays = SickLeaves + VacationDays + Holidays;
+            TotalDays = 26;
+
         }
 
         public void CalculateDays()
         {
+
             DaysRemaining = TotalDays - DaysTaken;
         }
        

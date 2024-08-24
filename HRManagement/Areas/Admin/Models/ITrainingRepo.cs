@@ -86,7 +86,7 @@ namespace HRManagement.Areas.Admin.Models
             List<TrainingDetail> trainings = _context.TrainingDetails
                 .Where(t => trainingIds.Contains(t.TrainingId))
                 .ToList();
-            if (trainings.Count == 2)
+            if (trainings.Count == 3)
             {
                 UpdatePayroll(empid);
             }
