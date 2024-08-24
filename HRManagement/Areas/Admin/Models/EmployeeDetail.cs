@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using static HRManagement.Attributes.MinimumAge;
 
 namespace HRManagement.Models
 {
@@ -16,6 +17,7 @@ namespace HRManagement.Models
 
 
         [DataType(DataType.DateTime)]
+        [MinimumAge(18, ErrorMessage = "Minimum age required is 18 years.")]
         public DateTime DateOfBirth { get; set; }
 
         [StringLength(50)]

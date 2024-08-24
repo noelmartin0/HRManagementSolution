@@ -8,9 +8,6 @@ namespace HRManagement.Models
         [Key]
         public int SNo { get; set; }
 
-
-
-
         public int EmployeeId { get; set; }
         //public EmployeeDetail EmployeeDetail { get; set; }
 

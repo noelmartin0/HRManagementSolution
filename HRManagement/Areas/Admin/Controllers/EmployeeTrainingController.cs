@@ -1,4 +1,4 @@
-﻿using HRManagement.Areas.Admin.Models;
+using HRManagement.Areas.Admin.Models;
 using HRManagement.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -38,17 +38,17 @@ namespace HRManagement.Areas.Admin.Controllers
         }
 
         // PUT api/<EmployeeTrainingController>/5
-        [HttpPut("{empid}/{traid}")]
-        public void Put(int empid,int traid, [FromBody] EmployeeTrainingDetail value)
+        [HttpPut("{EmployeeId}/{TrainingId}")]
+        public void Put(int EmployeeId, int TrainingId, [FromBody] EmployeeTrainingDetail value)
         {
-            _repo.UpdateEmpTrainingDependancy(empid, traid, value);
+            _repo.UpdateEmpTrainingDependancy(EmployeeId, TrainingId, value);
         }
 
         // DELETE api/<EmployeeTrainingController>/5
-        [HttpDelete("{empid}/{traid}")]
-        public void Delete(int empid,int traid)
+        [HttpDelete("{EmployeeId}/{TrainingId}")]
+        public void Delete(int EmployeeId, int TrainingId)
         {
-            _repo.DeleteEmpTrainingDependancyByEmployeeIdAndTrainingId(empid, traid);
+            _repo.DeleteEmpTrainingDependancyByEmployeeIdAndTrainingId(EmployeeId, TrainingId);
         }
     }
 }
