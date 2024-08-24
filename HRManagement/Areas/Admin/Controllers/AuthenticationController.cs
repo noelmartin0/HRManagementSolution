@@ -19,6 +19,18 @@ namespace HRManagement.Controllers
         {
             _repo = repo;
         }
+
+        [HttpPost("Register")]
+        public void UserRegistration([FromBody] AdminLogin user)
+        {
+            AdminLogin e = new AdminLogin();
+            e.Username = user.Username;
+            e.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+            e.setRole();
+            _repo.AddUser(e);
+        }
+
+
         [HttpPost("AdminLogin")]
         public ActionResult AdminLogin([FromBody] AdminLogin login)
         {
