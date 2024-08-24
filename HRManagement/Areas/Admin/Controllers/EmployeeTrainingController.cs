@@ -38,14 +38,14 @@ namespace HRManagement.Areas.Admin.Controllers
         }
 
         // PUT api/<EmployeeTrainingController>/5
-        [HttpPut("{id}")]
+        [HttpPut("{empid}/{traid}")]
         public void Put(int empid,int traid, [FromBody] EmployeeTrainingDetail value)
         {
             _repo.UpdateEmpTrainingDependancy(empid, traid, value);
         }
 
         // DELETE api/<EmployeeTrainingController>/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{empid}/{traid}")]
         public void Delete(int empid,int traid)
         {
             _repo.DeleteEmpTrainingDependancyByEmployeeIdAndTrainingId(empid, traid);

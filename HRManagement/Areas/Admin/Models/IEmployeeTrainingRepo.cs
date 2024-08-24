@@ -53,7 +53,7 @@ namespace HRManagement.Areas.Admin.Models
             else
             {
                 record.TrainingStatus = model.TrainingStatus;
-
+                _context.SaveChanges();
             }
 
         }

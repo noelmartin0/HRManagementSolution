@@ -73,7 +73,11 @@
             e.JoiningDate = employee.JoiningDate;
             e.DepartmentId = employee.DepartmentId;
             e.PreviousTrainingCertifications = employee.PreviousTrainingCertifications;
-            if(e.Status == "Resigned")
+
+
+
+
+            if(employee.Status == "Resigned")
             {
                 CreateResignationDetail(employee);
             }
