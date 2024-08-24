@@ -21,6 +21,8 @@ builder.Services.AddScoped<ILeaveRepo, LeaveRepo>();
 builder.Services.AddScoped<IPerformanceRepo, PerformanceRepo>();
 builder.Services.AddScoped<ITrainingRepo, TrainingRepo>();
 builder.Services.AddScoped<IResignationRepo, ResignationRepo>();
+builder.Services.AddScoped<HRManagement.Areas.Admin.Models.IResumeRepo, HRManagement.Areas.Admin.Models.ResumeTrackingRepo>();
+builder.Services.AddScoped<HRManagement.Models.IResumeRepo, HRManagement.Models.ResumeTrackingRepo>();
 
 
 
