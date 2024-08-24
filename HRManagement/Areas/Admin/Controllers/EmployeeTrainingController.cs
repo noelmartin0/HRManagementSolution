@@ -4,7 +4,7 @@
 
 namespace HRManagement.Areas.Admin.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Admin/[controller]")]
     [ApiController]
     public class EmployeeTrainingController : ControllerBase
     {

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HRManagement.Areas.Admin.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Admin/[controller]")]
     [ApiController]
     public class DepartmentController : ControllerBase
     {
