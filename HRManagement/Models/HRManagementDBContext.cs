@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using HRManagement.Models;
+using HRManagement.Areas.Admin.Models;
 
 namespace HRManagement.Models
 {
@@ -25,6 +26,8 @@ namespace HRManagement.Models
         public DbSet<ResignationDetail> ResignationDetails{get; set; }
         public DbSet<ResumeTrackingDetail> ResumeTrackingDetails { get; set; } 
         public DbSet<EmployeeTrainingDetail> EmployeeTrainingDetails { get; set; }
+        public DbSet<AdminLogin> AdminLoginDetails { get; set; }
+
 
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder)

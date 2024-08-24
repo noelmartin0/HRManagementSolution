@@ -22,6 +22,24 @@ namespace HRManagement.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("HRManagement.Areas.Admin.Models.AdminLogin", b =>
+                {
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Username");
+
+                    b.ToTable("AdminLoginDetails");
+                });
+
             modelBuilder.Entity("HRManagement.Models.DepartmentDetail", b =>
                 {
                     b.Property<int>("DepartmentId")

@@ -1,5 +1,6 @@
 ﻿using HRManagement.Areas.Admin.Models;
 using HRManagement.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -8,6 +9,7 @@ namespace HRManagement.Areas.Admin.Controllers
 {
     [Route("api/Admin/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
     public class TrainingController : ControllerBase
     {
         ITrainingRepo _tra;

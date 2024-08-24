@@ -1,4 +1,5 @@
 ﻿using HRManagement.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using IResumeRepo = HRManagement.Areas.Admin.Models.IResumeRepo;
 
@@ -8,6 +9,7 @@ namespace HRManagement.Areas.Admin.Controllers
 {
     [Route("api/Admin/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
     public class ResumeController : ControllerBase
     {
 
