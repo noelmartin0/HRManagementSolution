@@ -24,19 +24,19 @@ namespace HRManagement.Areas.Admin.Controllers
         }
 
         // GET api/<TrainingController>/5
-        [HttpGet("/TrainingByTrainingId/{id}")]
+        [HttpGet("api/Admin/TrainingByTrainingId/{id}")]
         public TrainingDetail Get(int id)
         {
             return _tra.GetTrainingByTrainingId(id);
         }
 
-        [HttpGet("/EmployeesUnderSpecifiedTrainingCourse/{id}")]
+        [HttpGet("api/Admin/EmployeesUnderSpecifiedTrainingCourse/{id}")]
         public List<EmployeeDetail> GetEmployees(int id)
         {
             return _tra.GetAllEmployeesByTrainingId(id);
         }
 
-        [HttpGet("/TrainingUnderwentBySpecifiedEmployee/{id}")]
+        [HttpGet("api/Admin/TrainingUnderwentBySpecifiedEmployee/{id}")]
         public List<TrainingDetail> GetTrainings(int id)
         {
             return _tra.GetTrainingsByEmployeeId(id);

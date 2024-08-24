@@ -28,7 +28,7 @@ namespace HRManagement.Areas.Admin.Controllers
             return _repo.GetPayrollByID(id);
         }
 
-        [HttpGet("/emp/{id}")]
+        [HttpGet("api/Admin/emp/{id}")]
         public PayrollDetail GetbyEmpId(int empid)
         {
             return _repo.GetPayrollByEmpID(empid);
