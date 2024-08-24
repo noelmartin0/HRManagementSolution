@@ -25,9 +25,7 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Views\" />
-    <Folder Include="Areas\Applicant\Controllers\" />
     <Folder Include="Areas\Applicant\Data\" />
-    <Folder Include="Areas\Applicant\Models\" />
     <Folder Include="Areas\Applicant\Views\" />
   </ItemGroup>
 
