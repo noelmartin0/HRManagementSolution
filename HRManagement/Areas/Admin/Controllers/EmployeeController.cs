@@ -28,10 +28,10 @@ namespace HRManagement.Areas.Admin.Controllers
         }
 
         // GET api/<AdminController>/5
-        [HttpGet("{id}")]
-        public EmployeeDetail Get(int id)
+        [HttpGet("{EmployeeId}")]
+        public EmployeeDetail Get(int EmployeeId)
         {
-            return _emp.GetEmployeeById(id);
+            return _emp.GetEmployeeById(EmployeeId);
         }
 
         // POST api/<AdminController>
@@ -44,24 +44,24 @@ namespace HRManagement.Areas.Admin.Controllers
         }
 
         // PUT api/<AdminController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] EmployeeDetail e)
+        [HttpPut("{EmployeeId}")]
+        public void Put(int EmployeeId, [FromBody] EmployeeDetail e)
         {
-            _emp.UpdateEmployee(id, e);
+            _emp.UpdateEmployee(EmployeeId, e);
 
         }
 
-        [HttpPut("status/{id}")]
-        public void Put(int id, [FromBody] string status)
+        [HttpPut("ChangeEmployeeStatus/{EmployeeId}")]
+        public void Put(int EmployeeId, [FromBody] string status)
         {
-            _emp.UpdateEmployeeStatus(id, status);
+            _emp.UpdateEmployeeStatus(EmployeeId, status);
         }
 
         // DELETE api/<AdminController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{EmployeeId}")]
+        public void Delete(int EmployeeId)
         {
-            _emp.DeleteEmployee(id);
+            _emp.DeleteEmployee(EmployeeId);
         }
     }
 }

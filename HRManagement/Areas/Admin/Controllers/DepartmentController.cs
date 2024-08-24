@@ -28,10 +28,10 @@ namespace HRManagement.Areas.Admin.Controllers
         }
 
         // GET api/<DepartmentController>/5
-        [HttpGet("{id}")]
-        public DepartmentDetail Get(int id)
+        [HttpGet("{DepartmentId}")]
+        public DepartmentDetail Get(int DepartmentId)
         {
-            return _dep.GetDepartmentById(id);
+            return _dep.GetDepartmentById(DepartmentId);
         }
 
         // POST api/<DepartmentController>
@@ -43,17 +43,17 @@ namespace HRManagement.Areas.Admin.Controllers
         }
 
         // PUT api/<DepartmentController>/5
-        [HttpPut("{id}")]
-        public void Put(int id,DepartmentDetail department)
+        [HttpPut("{DepartmentId}")]
+        public void Put(int DepartmentId, DepartmentDetail department)
         {
-            _dep.UpdateDepartment(id,department);
+            _dep.UpdateDepartment(DepartmentId, department);
         }
 
         // DELETE api/<DepartmentController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{DepartmentId}")]
+        public void Delete(int DepartmentId)
         {
-            _dep.DeleteDepartment(id);
+            _dep.DeleteDepartment(DepartmentId);
 
         }
     }
