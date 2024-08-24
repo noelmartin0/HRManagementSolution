@@ -136,6 +136,7 @@
             leaveDetail.SetDays();
             leaveDetail.CalculateDays();
             _context.LeaveDetails.Add(leaveDetail);
+
             _context.SaveChanges();
 
         }
