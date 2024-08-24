@@ -36,6 +36,7 @@ namespace HRManagement.Areas.Admin.Controllers
         [HttpPost]
         public void Post([FromBody] EmployeeDetail e)
         {
+
             _emp.AddEmployee(e);
 
         }

@@ -35,6 +35,6 @@ namespace HRManagement.Models
 
         // Navigation Properties
 
-        //public EmployeeDetail EmployeeDetail { get; set; }
+        public EmployeeDetail EmployeeDetail { get; set; }
     }
 }

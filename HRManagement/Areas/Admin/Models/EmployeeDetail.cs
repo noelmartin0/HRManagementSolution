@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using static HRManagement.Attributes.MinimumAge;
 
 namespace HRManagement.Models
 {
@@ -16,6 +17,7 @@ namespace HRManagement.Models
 
 
         [DataType(DataType.DateTime)]
+        [MinimumAge(18, ErrorMessage = "Minimum age required is 18 years.")]
         public DateTime DateOfBirth { get; set; }
 
         [StringLength(50)]
@@ -57,14 +59,14 @@ namespace HRManagement.Models
         public string? PreviousTrainingCertifications { get; set; }
 
 
-        //public DepartmentDetail DepartmentDetail { get; set; }
-        //public LeaveDetail LeaveDetail { get; set; }
-        //public PayrollDetail PayrollDetail { get; set; }
-        //public PerformanceDetail PerformanceDetail { get; set; }
-        //public ResignationDetail ResignationDetail { get; set; }
+        public DepartmentDetail DepartmentDetail { get; set; }
+        public LeaveDetail LeaveDetail { get; set; }
+        public PayrollDetail PayrollDetail { get; set; }
+        public PerformanceDetail PerformanceDetail { get; set; }
+        public ResignationDetail ResignationDetail { get; set; }
 
 
-        //public ICollection<EmployeeTrainingDetail> EmployeeTrainingDetail { get; set; }
+        public ICollection<EmployeeTrainingDetail> EmployeeTrainingDetail { get; set; }
 
     }
  
