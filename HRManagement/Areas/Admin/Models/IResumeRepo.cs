@@ -55,6 +55,11 @@ namespace HRManagement.Areas.Admin.Models
                 ResumeTrackingDetail r = _context.ResumeTrackingDetails.Find(id);
                 r.ApplicantName = resume.ApplicantName;
                 r.PhoneNo = resume.PhoneNo;
+                r.Email = resume.Email;
+                r.Address = resume.Address;
+                r.DateOfBirth = resume.DateOfBirth;
+                r.Nationality = resume.Nationality;
+                r.ApplyingFor = resume.ApplyingFor;
                 r.Experience = resume.Experience;
                 r.Specialization = resume.Specialization;
                 r.AreaOfInterest = resume.AreaOfInterest;
