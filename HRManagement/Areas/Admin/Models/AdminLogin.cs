@@ -8,7 +8,8 @@ namespace HRManagement.Areas.Admin.Models
         
         public string Username { get; set; }
         public string Password { get; set; }
-        public string Role { get; private set; }
+        public string Role { get; private set; } = "Admin";
+            
 
         public void setRole()
         {

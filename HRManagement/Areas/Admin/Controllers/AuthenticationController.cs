@@ -26,7 +26,7 @@ namespace HRManagement.Controllers
             AdminLogin e = new AdminLogin();
             e.Username = user.Username;
             e.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
-            e.setRole();
+           // e.setRole();
             _repo.AddUser(e);
         }
 
