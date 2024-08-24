@@ -62,12 +62,23 @@
                 throw new InvalidOperationException($"No payroll details found for Employee ID {empid}");
             }
 
-           
-            existingPayroll.Basicpay = payroll.Basicpay;
-            existingPayroll.Allowance = payroll.Allowance;
-            existingPayroll.Deduction = payroll.Deduction;
 
-            
+            if (payroll.Basicpay != 0)
+            {
+                existingPayroll.Basicpay = payroll.Basicpay;
+            }
+
+            if (payroll.Allowance != 0)
+            {
+                existingPayroll.Allowance = payroll.Allowance;
+            }
+
+            if (payroll.Deduction != 0)
+            {
+                existingPayroll.Deduction = payroll.Deduction;
+            }
+
+
             existingPayroll.CalculatePay();
 
             _context.SaveChanges();

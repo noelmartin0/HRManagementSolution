@@ -60,24 +60,93 @@
 
         public void UpdateEmployee(int id, EmployeeDetail employee)
         {
+            //EmployeeDetail e = _context.EmployeeDetails.Find(id);
+            //e.EmployeeName = employee.EmployeeName;
+            //e.DateOfBirth = employee.DateOfBirth;
+            //e.Address = employee.Address;
+            //e.Nationality = employee.Nationality;
+            //e.PhoneNumber = employee.PhoneNumber;
+            //e.Email = employee.Email;
+            //e.ManagerId = employee.ManagerId;
+            //e.Status = employee.Status;
+            //e.Position = employee.Position;
+            //e.JoiningDate = employee.JoiningDate;
+            //e.DepartmentId = employee.DepartmentId;
+            //e.PreviousTrainingCertifications = employee.PreviousTrainingCertifications;
+            //if(e.Status == "Resigned")
+            //{
+            //    CreateResignationDetail(employee);
+            //}
+            //_context.SaveChanges();
+            
+            
+            
             EmployeeDetail e = _context.EmployeeDetails.Find(id);
-            e.EmployeeName = employee.EmployeeName;
-            e.DateOfBirth = employee.DateOfBirth;
-            e.Address = employee.Address;
-            e.Nationality = employee.Nationality;
-            e.PhoneNumber = employee.PhoneNumber;
-            e.Email = employee.Email;
-            e.ManagerId = employee.ManagerId;
-            e.Status = employee.Status;
-            e.Position = employee.Position;
-            e.JoiningDate = employee.JoiningDate;
-            e.DepartmentId = employee.DepartmentId;
-            e.PreviousTrainingCertifications = employee.PreviousTrainingCertifications;
-            if(e.Status == "Resigned")
+            if (e != null)
             {
-                CreateResignationDetail(employee);
+                if (!employee.EmployeeName.Equals("string"))
+                {
+                    e.EmployeeName = employee.EmployeeName;
+                }
+
+               
+                    e.DateOfBirth = employee.DateOfBirth;
+                
+
+                if (!employee.Address.Equals("string"))
+                {
+                    e.Address = employee.Address;
+                }
+
+                if (!employee.Nationality.Equals("string"))
+                {
+                    e.Nationality = employee.Nationality;
+                }
+
+                if (!employee.PhoneNumber.Equals("string"))
+                {
+                    e.PhoneNumber = employee.PhoneNumber;
+                }
+
+                if (!employee.Email.Equals("user@example.com"))
+                {
+                    e.Email = employee.Email;
+                }
+
+                if (employee.ManagerId!=0)
+                {
+                    e.ManagerId = employee.ManagerId;
+                }
+
+                if (!employee.Status.Equals("string"))
+                {
+                    e.Status = employee.Status;
+                }
+
+                if (!employee.Position.Equals("string"))
+                {
+                    e.Position = employee.Position;
+                }
+
+                
+                    e.JoiningDate = employee.JoiningDate;
+                
+
+                if (employee.DepartmentId != 0)
+                {
+                    e.DepartmentId = employee.DepartmentId;
+                }
+
+                if (!employee.PreviousTrainingCertifications.Equals("string"))
+                {
+                    e.PreviousTrainingCertifications = employee.PreviousTrainingCertifications;
+                }
+
+                // Save changes to the context
+                _context.SaveChanges();
             }
-            _context.SaveChanges();
+
+
         }
 
 
