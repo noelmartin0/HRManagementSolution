@@ -35,6 +35,7 @@ namespace HRManagement.Areas.Admin.Models
             {
                 ResumeTrackingDetail m = _context.ResumeTrackingDetails.Find(id);
                 _context.ResumeTrackingDetails.Remove(m);
+            _context.SaveChanges();
 
             }
 
@@ -58,6 +59,7 @@ namespace HRManagement.Areas.Admin.Models
                 r.Specialization = resume.Specialization;
                 r.AreaOfInterest = resume.AreaOfInterest;
                 r.Qualification = resume.Qualification;
+            r.Certifications = resume.Certifications;
                 _context.SaveChanges();
             }
 
