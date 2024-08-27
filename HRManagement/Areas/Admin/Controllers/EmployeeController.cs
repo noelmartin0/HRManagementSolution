@@ -8,7 +8,7 @@ namespace HRManagement.Areas.Admin.Controllers
 {
     [Route("api/Admin/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin")]
+   // [Authorize(Roles = "Admin")]
     public class EmployeeController : ControllerBase
     {
 
@@ -32,6 +32,19 @@ namespace HRManagement.Areas.Admin.Controllers
         public EmployeeDetail Get(int EmployeeId)
         {
             return _emp.GetEmployeeById(EmployeeId);
+        }
+
+        [HttpGet("EmployeeName")]
+
+        public List<EmployeeDetail> Get(string EmployeeName)
+        {
+            return _emp.GetEmployeeByName(EmployeeName);
+        }
+
+        [HttpGet("Department/{DeptID}")]
+        public List<EmployeeDetail> GetByDeptID(int DeptID)
+        {
+            return _emp.GetEmployeeByDeptID(DeptID);
         }
 
         // POST api/<AdminController>

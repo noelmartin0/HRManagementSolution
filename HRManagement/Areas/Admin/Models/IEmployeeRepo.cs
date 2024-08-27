@@ -1,8 +1,12 @@
-﻿namespace HRManagement.Models
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace HRManagement.Models
 {
     public interface IEmployeeRepo
     {
         EmployeeDetail GetEmployeeById(int id);
+        List<EmployeeDetail> GetEmployeeByName(string name);
+        List<EmployeeDetail> GetEmployeeByDeptID(int deptID);
         List<EmployeeDetail> GetAllEmployees();
         void AddEmployee(EmployeeDetail employee);
         void UpdateEmployee(int id, EmployeeDetail employee);
@@ -210,11 +214,16 @@
 
         }
 
+        public List<EmployeeDetail> GetEmployeeByName(string name)
+        {
+            return _context.EmployeeDetails
+                 .Where(e => EF.Functions.Like(e.EmployeeName.ToLower(), $"%{name.ToLower()}%"))
+                 .ToList();
+        }
 
-
-
-
-
-
+        public List<EmployeeDetail> GetEmployeeByDeptID(int deptid)
+        {
+            return _context.EmployeeDetails.Where(e=>e.DepartmentId == deptid).ToList();
+        }
     }
 }
