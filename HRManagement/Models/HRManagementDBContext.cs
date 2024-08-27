@@ -58,9 +58,6 @@ namespace HRManagement.Models
         //  .HasForeignKey<ResignationDetail>(p => p.EmployeeId);
 
         //    modelBuilder.Entity<EmployeeTrainingDetail>()
-        //        .HasKey(e => new { e.EmployeeId, e.TrainingId });
-
-        //    modelBuilder.Entity<EmployeeTrainingDetail>()
         //        .HasOne(e => e.EmployeeDetail)
         //        .WithMany(d => d.EmployeeTrainingDetail)
         //        .HasForeignKey(e => e.EmployeeId);

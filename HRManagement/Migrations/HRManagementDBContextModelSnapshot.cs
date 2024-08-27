@@ -124,13 +124,16 @@ namespace HRManagement.Migrations
 
             modelBuilder.Entity("HRManagement.Models.EmployeeTrainingDetail", b =>
                 {
+                    b.Property<int>("SNo")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SNo"), 1L, 1);
+
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
                     b.Property<int>("TrainingId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SNo")
                         .HasColumnType("int");
 
                     b.Property<string>("TrainingStatus")
@@ -138,7 +141,9 @@ namespace HRManagement.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("EmployeeId", "TrainingId");
+                    b.HasKey("SNo");
+
+                    b.HasIndex("EmployeeId");
 
                     b.HasIndex("TrainingId");
 

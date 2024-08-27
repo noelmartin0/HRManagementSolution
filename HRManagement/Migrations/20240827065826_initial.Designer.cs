@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HRManagement.Migrations
 {
     [DbContext(typeof(HRManagementDBContext))]
-    [Migration("20240824095146_initial")]
+    [Migration("20240827065826_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -126,13 +126,16 @@ namespace HRManagement.Migrations
 
             modelBuilder.Entity("HRManagement.Models.EmployeeTrainingDetail", b =>
                 {
+                    b.Property<int>("SNo")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SNo"), 1L, 1);
+
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
                     b.Property<int>("TrainingId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SNo")
                         .HasColumnType("int");
 
                     b.Property<string>("TrainingStatus")
@@ -140,7 +143,9 @@ namespace HRManagement.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("EmployeeId", "TrainingId");
+                    b.HasKey("SNo");
+
+                    b.HasIndex("EmployeeId");
 
                     b.HasIndex("TrainingId");
 

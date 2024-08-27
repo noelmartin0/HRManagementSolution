@@ -20,7 +20,6 @@ namespace HRManagement.Areas.Admin.Models
         public void AddEmpTrainingDependancy(EmployeeTrainingDetail model)
         {
             _context.EmployeeTrainingDetails.Add(model);
-            model.SetSNo();
             _context.SaveChanges();
             CheckForUpdatingPayroll(model);
 
@@ -29,7 +28,7 @@ namespace HRManagement.Areas.Admin.Models
         private void CheckForUpdatingPayroll(EmployeeTrainingDetail model)
         {
             var trainingIds = _context.EmployeeTrainingDetails
-                 .Where(et => et.EmployeeId == model.EmployeeId && et.TrainingStatus == "Completed")
+                 .Where(et => et.EmployeeId == model.EmployeeId && (et.TrainingStatus == "Completed"|| et.TrainingStatus == "completed"))
                  .Select(et => et.TrainingId)
                  .ToList();
 

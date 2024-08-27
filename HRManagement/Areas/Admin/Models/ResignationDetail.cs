@@ -33,7 +33,6 @@ namespace HRManagement.Models
 
         public string PhoneNumber { get; set; }
 
-        // Navigation Properties
 
         //public EmployeeDetail EmployeeDetail { get; set; }
     }

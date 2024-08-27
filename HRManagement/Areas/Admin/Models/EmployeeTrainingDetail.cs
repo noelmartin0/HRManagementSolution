@@ -6,7 +6,7 @@ namespace HRManagement.Models
     public class EmployeeTrainingDetail
     {
         [Key]
-        public int SNo { get; set; }
+        public int SNo { get; private set; }
 
         public int EmployeeId { get; set; }
         //public EmployeeDetail EmployeeDetail { get; set; }
@@ -19,12 +19,9 @@ namespace HRManagement.Models
         [MinLength(5)]
         public string TrainingStatus { get; set; }
 
-        public static int count = 0;
+        
         public int flag = 0;
-        public void SetSNo()
-        {
-            SNo = ++count;
-        }
+        
 
  
 

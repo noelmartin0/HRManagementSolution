@@ -15,7 +15,7 @@ namespace HRManagement.Migrations
                 {
                     Username = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Role = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Role = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -99,21 +99,22 @@ namespace HRManagement.Migrations
                         column: x => x.DepartmentId,
                         principalTable: "DepartmentDetails",
                         principalColumn: "DepartmentId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
                 name: "EmployeeTrainingDetails",
                 columns: table => new
                 {
+                    SNo = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     EmployeeId = table.Column<int>(type: "int", nullable: false),
                     TrainingId = table.Column<int>(type: "int", nullable: false),
-                    SNo = table.Column<int>(type: "int", nullable: false),
                     TrainingStatus = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EmployeeTrainingDetails", x => new { x.EmployeeId, x.TrainingId });
+                    table.PrimaryKey("PK_EmployeeTrainingDetails", x => x.SNo);
                     table.ForeignKey(
                         name: "FK_EmployeeTrainingDetails_EmployeeDetails_EmployeeId",
                         column: x => x.EmployeeId,
@@ -229,6 +230,11 @@ namespace HRManagement.Migrations
                 name: "IX_EmployeeDetails_DepartmentId",
                 table: "EmployeeDetails",
                 column: "DepartmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EmployeeTrainingDetails_EmployeeId",
+                table: "EmployeeTrainingDetails",
+                column: "EmployeeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_EmployeeTrainingDetails_TrainingId",
