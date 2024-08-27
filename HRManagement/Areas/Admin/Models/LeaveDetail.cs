@@ -19,10 +19,10 @@ namespace HRManagement.Models
         [Required]
         public int TotalDays { get; set; }
 
-        
+        [Range(0, 26, ErrorMessage = "Days taken cannot be negative or greater than 26.")]
         public int? DaysTaken { get; set; }
 
-        [Range(0, int.MaxValue, ErrorMessage ="DaysRemaining cannot be negative.")]
+        [Range(0, 26, ErrorMessage = "Days remaining cannot be negative or greater than 26.")]
         public int? DaysRemaining { get;private set; }
 
         public void SetDays()
@@ -41,6 +41,6 @@ namespace HRManagement.Models
             DaysRemaining = TotalDays - DaysTaken;
         }
        
-        //public EmployeeDetail EmployeeDetail { get; set; }
+        public EmployeeDetail EmployeeDetail { get; set; }
     }
 }
