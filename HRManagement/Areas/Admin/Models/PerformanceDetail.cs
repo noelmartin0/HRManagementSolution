@@ -22,7 +22,7 @@ namespace HRManagement.Models
         public int EvaluationPeriod { get; set; }
 
        
-        public EmployeeDetail EmployeeDetail { get; set; }
+        //public EmployeeDetail EmployeeDetail { get; set; }
 
         
 

@@ -46,7 +46,7 @@ namespace HRManagement.Models
 
 
 
-        public EmployeeDetail EmployeeDetail { get; set; }
+        //public EmployeeDetail EmployeeDetail { get; set; }
 
 
     }
