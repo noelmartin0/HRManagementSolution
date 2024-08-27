@@ -20,18 +20,18 @@ namespace HRManagement.Areas.Admin.Controllers
 
    
         // GET api/<ResignationController>/5
-        [HttpGet("{id}")]
-        public ResignationDetail GetByPayroll(int id)
+        [HttpGet("{ResignationId}")]
+        public ResignationDetail GetResignation(int ResignationId)
         {
-           return _res.GetResignationById(id);
+           return _res.GetResignationById(ResignationId);
 
         }
          
 
-        [HttpGet("emp/{id}")]
-        public ResignationDetail GetByEmployeeId(int id)
+        [HttpGet("Employee/{EmployeeId}")]
+        public ResignationDetail GetByEmployeeId(int EmployeeId)
         {
-            return _res.GetResignationByEmployeeId(id);
+            return _res.GetResignationByEmployeeId(EmployeeId);
 
         }
 
@@ -45,10 +45,10 @@ namespace HRManagement.Areas.Admin.Controllers
       
 
         // DELETE api/<ResignationController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{ResignationId}")]
+        public void Delete(int ResignationId)
         {
-            _res.DeleteEmployeeResignation(id);
+            _res.DeleteEmployeeResignation(ResignationId);
         }
 
 

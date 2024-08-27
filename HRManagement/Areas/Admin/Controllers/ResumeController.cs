@@ -28,10 +28,10 @@ namespace HRManagement.Areas.Admin.Controllers
         }
 
         // GET api/<ResumeController>/5
-        [HttpGet("{id}")]
-        public ResumeTrackingDetail Get(int id)
+        [HttpGet("{ResumeId}")]
+        public ResumeTrackingDetail Get(int ResumeId)
         {
-            return _emp.GetResumeById(id);
+            return _emp.GetResumeById(ResumeId);
         }
 
         // POST api/<ResumeController>
@@ -42,23 +42,23 @@ namespace HRManagement.Areas.Admin.Controllers
         }
 
         // PUT api/<ResumeController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] ResumeTrackingDetail resume)
+        [HttpPut("{ResumeId}")]
+        public void Put(int ResumeId, [FromBody] ResumeTrackingDetail resume)
         {
-            _emp.UpdateResume(id, resume);
+            _emp.UpdateResume(ResumeId, resume);
         }
 
         // DELETE api/<ResumeController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{ResumeId}")]
+        public void Delete(int ResumeId)
         {
-            _emp.DeleteResume(id);
+            _emp.DeleteResume(ResumeId);
         }
 
-        [HttpPost("Hire/{id}")]
-        public void Hire(int id, [FromBody] EmployeeDetail emp)
+        [HttpPost("HireApplicant/{ResumeId}")]
+        public void Hire(int ResumeId, [FromBody] EmployeeDetail emp)
         {
-            _emp.HireEmployee(id, emp);
+            _emp.HireEmployee(ResumeId, emp);
         }
     }
 }

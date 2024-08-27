@@ -22,17 +22,17 @@ namespace HRManagement.Areas.Admin.Controllers
 
 
         // GET api/<LeaveController>/5
-        [HttpGet("{id}")]
-        public LeaveDetail Get(int id)
+        [HttpGet("{LeaveId}")]
+        public LeaveDetail Get(int LeaveId)
         {
-          return  _emp.GetLeaveByLeaveId(id);
+          return  _emp.GetLeaveByLeaveId(LeaveId);
         }
 
 
-        [HttpGet("Employee/{empid}")]
-        public LeaveDetail GetByEmpId(int empid)
+        [HttpGet("Employee/{EmployeeId}")]
+        public LeaveDetail GetByEmpId(int EmployeeId)
         {
-            return _emp.GetLeaveByEmployeeId(empid);
+            return _emp.GetLeaveByEmployeeId(EmployeeId);
         }
 
 
@@ -46,17 +46,17 @@ namespace HRManagement.Areas.Admin.Controllers
         }
 
         // PUT api/<LeaveController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] LeaveDetail value)
+        [HttpPut("{LeaveId}")]
+        public void Put(int LeaveId, [FromBody] LeaveDetail value)
         {
-            _emp.UpdateEmployeeLeaveDetail(id, value);
+            _emp.UpdateEmployeeLeaveDetail(LeaveId, value);
             
         }
 
-        [HttpPut("Employee/{empid}")]
-        public void PutByEmpID(int empid, [FromBody] LeaveDetail value)
+        [HttpPut("Employee/{EmployeeId}")]
+        public void PutByEmpID(int EmployeeId, [FromBody] LeaveDetail value)
         {
-            _emp.UpdateByEmployeeId(empid, value);
+            _emp.UpdateByEmployeeId(EmployeeId, value);
 
         }
 

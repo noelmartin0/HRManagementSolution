@@ -24,16 +24,16 @@ namespace HRManagement.Areas.Admin.Controllers
         }
 
         // GET api/<PayrollController>/5
-        [HttpGet("{id}")]
-        public PayrollDetail Get(int id)
+        [HttpGet("{PayrollId}")]
+        public PayrollDetail Get(int PayrollId)
         {
-            return _repo.GetPayrollByID(id);
+            return _repo.GetPayrollByID(PayrollId);
         }
 
-        [HttpGet("api/Admin/emp/{id}")]
-        public PayrollDetail GetbyEmpId(int empid)
+        [HttpGet("/Employee/{EmployeeId}")]
+        public PayrollDetail GetbyEmpId(int EmployeeId)
         {
-            return _repo.GetPayrollByEmpID(empid);
+            return _repo.GetPayrollByEmpID(EmployeeId);
         }
 
         // POST api/<PayrollController>
@@ -44,24 +44,24 @@ namespace HRManagement.Areas.Admin.Controllers
         }
 
         // PUT api/<PayrollController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] PayrollDetail p)
+        [HttpPut("{EmployeeId}")]
+        public void Put(int EmployeeId, [FromBody] PayrollDetail p)
         {
-            _repo.UpdateEmployeePayroll(id, p);
+            _repo.UpdateEmployeePayroll(EmployeeId, p);
         }
 
         // DELETE api/<PayrollController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{PayrollId}")]
+        public void Delete(int PayrollId)
         {
-            _repo.DeleteEmployeePayroll(id);
+            _repo.DeleteEmployeePayroll(PayrollId);
 
         }
 
-        [HttpDelete("Employee/{id}")]
-        public void DeleteByEmpID(int id)
+        [HttpDelete("Employee/{EmployeeId}")]
+        public void DeleteByEmpID(int EmployeeId)
         {
-            _repo.DeletePayrollByEmpID(id);
+            _repo.DeletePayrollByEmpID(EmployeeId);
 
         }
 

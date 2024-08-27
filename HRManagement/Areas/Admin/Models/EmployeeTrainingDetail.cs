@@ -19,7 +19,16 @@ namespace HRManagement.Models
         [MinLength(5)]
         public string TrainingStatus { get; set; }
 
+        public static int count = 0;
+        public int flag = 0;
+        public void SetSNo()
+        {
+            SNo = ++count;
+        }
 
+ 
+
+       
     }
 
 }

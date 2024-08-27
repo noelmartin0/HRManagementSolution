@@ -19,16 +19,16 @@ namespace HRManagement.Areas.Admin.Controllers
 
        
         // GET api/<PerformanceController>/5
-        [HttpGet("{id}")]
-        public PerformanceDetail Get(int id)
+        [HttpGet("{PerformanceId}")]
+        public PerformanceDetail Get(int PerformanceId)
         {
-            return _emp.GetPerformanceById(id);
+            return _emp.GetPerformanceById(PerformanceId);
         }
 
-        [HttpGet("Employee/{empid}")]
-        public PerformanceDetail GetByEmpId(int empid)
+        [HttpGet("Employee/{EmployeeId}")]
+        public PerformanceDetail GetByEmpId(int EmployeeId)
         {
-            return _emp.GetPerformanceByEmpID(empid);
+            return _emp.GetPerformanceByEmpID(EmployeeId);
         }
 
 
@@ -43,18 +43,18 @@ namespace HRManagement.Areas.Admin.Controllers
         }
 
         // PUT api/<PerformanceController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] PerformanceDetail e)
+        [HttpPut("{PerformanceId}")]
+        public void Put(int PerformanceId, [FromBody] PerformanceDetail e)
         {
-            _emp.UpdateEmployeePerformance(id, e);
+            _emp.UpdateEmployeePerformance(PerformanceId, e);
 
         }
 
         // DELETE api/<PerformanceController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{PerformanceId}")]
+        public void Delete(int PerformanceId)
         {
-            _emp.DeleteEmployeePerformance(id);
+            _emp.DeleteEmployeePerformance(PerformanceId);
 
         }
     }

@@ -26,22 +26,22 @@ namespace HRManagement.Areas.Admin.Controllers
         }
 
         // GET api/<TrainingController>/5
-        [HttpGet("api/Admin/TrainingByTrainingId/{id}")]
-        public TrainingDetail Get(int id)
+        [HttpGet("api/Admin/TrainingByTrainingId/{TrainingId}")]
+        public TrainingDetail Get(int TrainingId)
         {
-            return _tra.GetTrainingByTrainingId(id);
+            return _tra.GetTrainingByTrainingId(TrainingId);
         }
 
-        [HttpGet("api/Admin/EmployeesUnderSpecifiedTrainingCourse/{id}")]
-        public List<EmployeeDetail> GetEmployees(int id)
+        [HttpGet("api/Admin/EmployeesUnderSpecifiedTrainingCourse/{TrainingId}")]
+        public List<EmployeeDetail> GetEmployees(int TrainingId)
         {
-            return _tra.GetAllEmployeesByTrainingId(id);
+            return _tra.GetAllEmployeesByTrainingId(TrainingId);
         }
 
-        [HttpGet("api/Admin/TrainingUnderwentBySpecifiedEmployee/{id}")]
-        public List<TrainingDetail> GetTrainings(int id)
+        [HttpGet("api/Admin/TrainingUnderwentBySpecifiedEmployee/{EmployeeId}")]
+        public List<TrainingDetail> GetTrainings(int EmployeeId)
         {
-            return _tra.GetTrainingsByEmployeeId(id);
+            return _tra.GetTrainingsByEmployeeId(EmployeeId);
         }
 
         // POST api/<TrainingController>
@@ -52,17 +52,17 @@ namespace HRManagement.Areas.Admin.Controllers
         }
 
         // PUT api/<TrainingController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] TrainingDetail value)
+        [HttpPut("{TrainingId}")]
+        public void Put(int TrainingId, [FromBody] TrainingDetail value)
         {
-            _tra.UpdateTraining(id, value);
+            _tra.UpdateTraining(TrainingId, value);
         }
 
         // DELETE api/<TrainingController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{TrainingId}")]
+        public void Delete(int TrainingId)
         {
-            _tra.DeleteTraining(id);
+            _tra.DeleteTraining(TrainingId);
         }
     }
 }
