@@ -10,6 +10,8 @@ namespace HRManagement.Models
         [Required]
         public string ApplicantName { get; set;}
         [Required]
+
+        [RegularExpression(@"^\d{10}$", ErrorMessage = "Phone number must be exactly 10 digits.")]
         public string PhoneNo { get; set;}
         [Required]
 
