@@ -10,11 +10,11 @@ namespace HRManagement.Areas.Admin.Controllers
     [Route("api/Admin/[controller]")]
     [ApiController]
     [Authorize(Roles = "Admin")]
-    public class ResumeController : ControllerBase
+    public class ResumeTrackingController : ControllerBase
     {
 
         IResumeRepo _emp;
-        public ResumeController(IResumeRepo repo)
+        public ResumeTrackingController(IResumeRepo repo)
         {
             _emp= repo;
         }
