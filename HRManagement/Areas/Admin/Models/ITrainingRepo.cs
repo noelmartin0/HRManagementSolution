@@ -33,6 +33,10 @@ namespace HRManagement.Areas.Admin.Models
         public void DeleteTraining(int trid)
         {
             TrainingDetail tr = _context.TrainingDetails.Find(trid);
+            if (tr == null)
+            {
+                throw new InvalidOperationException($"No Training Details found with TrainingID = {trid}");
+            }
             _context.TrainingDetails.Remove(tr);
             _context.SaveChanges();
 
@@ -65,12 +69,22 @@ namespace HRManagement.Areas.Admin.Models
 
         public TrainingDetail GetTrainingByTrainingId(int trid)
         {
-            return _context.TrainingDetails.Find(trid);
+            TrainingDetail tr= _context.TrainingDetails.Find(trid);
+
+            if (tr == null)
+            {
+                throw new InvalidOperationException($"No Training Details found with TrainingID = {trid}");
+            }
+            return tr;
         }
 
         public void UpdateTraining(int id, TrainingDetail training)
         {
             TrainingDetail model = _context.TrainingDetails.Find(id);
+            if (model == null)
+            {
+                throw new InvalidOperationException($"No Training Details found with TrainingID = {training}");
+            }
             model.TrainingName = training.TrainingName;
             _context.SaveChanges();
         }

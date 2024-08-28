@@ -33,6 +33,10 @@ namespace HRManagement.Areas.Admin.Models
         public void DeleteDepartment(int id)
         {
             DepartmentDetail dep = _context.DepartmentDetails.Find(id);
+            if (dep == null)
+            {
+                throw new InvalidOperationException($"No department is found having ID = {id}");
+            }
             _context.DepartmentDetails.Remove(dep);
             _context.SaveChanges();
         }
@@ -44,12 +48,22 @@ namespace HRManagement.Areas.Admin.Models
 
         public DepartmentDetail GetDepartmentById(int id)
         {
-            return _context.DepartmentDetails.Find(id);
+            DepartmentDetail department = _context.DepartmentDetails.Find(id);
+            if (department == null)
+            {
+                throw new InvalidOperationException($"No department is found having ID = {id}");
+            }
+            return department;
+
         }
 
         public void UpdateDepartment(int id, DepartmentDetail department)
         {
             DepartmentDetail dep = _context.DepartmentDetails.Find(id);
+            if (dep == null)
+            {
+                throw new InvalidOperationException($"No department is found having ID = {id}");
+            }
             dep.DepartmentName = department.DepartmentName;
             _context.SaveChanges();
 
