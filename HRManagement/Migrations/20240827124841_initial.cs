@@ -65,7 +65,7 @@ namespace HRManagement.Migrations
                 {
                     TrainingId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "10, 1"),
-                    TrainingName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    TrainingName = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -82,8 +82,8 @@ namespace HRManagement.Migrations
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Nationality = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Address = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ManagerId = table.Column<int>(type: "int", nullable: true),
                     Status = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Position = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
@@ -99,7 +99,7 @@ namespace HRManagement.Migrations
                         column: x => x.DepartmentId,
                         principalTable: "DepartmentDetails",
                         principalColumn: "DepartmentId",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -227,9 +227,21 @@ namespace HRManagement.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_DepartmentDetails_DepartmentName",
+                table: "DepartmentDetails",
+                column: "DepartmentName",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_EmployeeDetails_DepartmentId",
                 table: "EmployeeDetails",
                 column: "DepartmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EmployeeDetails_PhoneNumber_Email",
+                table: "EmployeeDetails",
+                columns: new[] { "PhoneNumber", "Email" },
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_EmployeeTrainingDetails_EmployeeId",
@@ -263,6 +275,12 @@ namespace HRManagement.Migrations
                 name: "IX_ResignationDetails_EmployeeId",
                 table: "ResignationDetails",
                 column: "EmployeeId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TrainingDetails_TrainingName",
+                table: "TrainingDetails",
+                column: "TrainingName",
                 unique: true);
         }
 

@@ -11,12 +11,7 @@ namespace HRManagement.Models
         {
 
         }
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<EmployeeDetail>()
-        //   .Property(p => p.EmployeeId + 1)
-        //   .ValueGeneratedOnAdd();
-        //}
+     
         public DbSet<EmployeeDetail> EmployeeDetails { get; set; }
         public DbSet <PayrollDetail> PayrollDetails { get; set; }
         public DbSet<TrainingDetail> TrainingDetails { get; set; }

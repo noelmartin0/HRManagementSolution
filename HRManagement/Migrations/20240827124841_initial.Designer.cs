@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HRManagement.Migrations
 {
     [DbContext(typeof(HRManagementDBContext))]
-    [Migration("20240827065826_initial")]
+    [Migration("20240827124841_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,6 +57,9 @@ namespace HRManagement.Migrations
 
                     b.HasKey("DepartmentId");
 
+                    b.HasIndex("DepartmentName")
+                        .IsUnique();
+
                     b.ToTable("DepartmentDetails");
                 });
 
@@ -81,7 +84,7 @@ namespace HRManagement.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("EmployeeName")
                         .IsRequired()
@@ -101,7 +104,7 @@ namespace HRManagement.Migrations
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Position")
                         .IsRequired()
@@ -120,6 +123,9 @@ namespace HRManagement.Migrations
                     b.HasKey("EmployeeId");
 
                     b.HasIndex("DepartmentId");
+
+                    b.HasIndex("PhoneNumber", "Email")
+                        .IsUnique();
 
                     b.ToTable("EmployeeDetails");
                 });
@@ -372,9 +378,12 @@ namespace HRManagement.Migrations
 
                     b.Property<string>("TrainingName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("TrainingId");
+
+                    b.HasIndex("TrainingName")
+                        .IsUnique();
 
                     b.ToTable("TrainingDetails");
                 });

@@ -1,10 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using static HRManagement.Attributes.MinimumAge;
 
 namespace HRManagement.Models
 {
     [Table("EmployeeDetails")]
+    [Index(nameof(PhoneNumber), nameof(Email), IsUnique = true)]
     public class EmployeeDetail
     {
         [Key]
@@ -29,7 +31,9 @@ namespace HRManagement.Models
         [MinLength(3)]
         public string Address { get; set; }
 
-
+       
+        [RegularExpression(@"^\d{10}$", ErrorMessage = "Phone number must be exactly 10 digits.")]//with @, you dont need an extra backslash
+                                                                                                  //before the escape sequence
         public string PhoneNumber { get; set; }
 
 
