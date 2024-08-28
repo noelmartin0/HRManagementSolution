@@ -15,7 +15,7 @@ namespace HRManagement.Attributes
                 if (!_statuslist.Contains(value))
                 {
                     var statusListString = string.Join(", ", _statuslist);
-                    return new ValidationResult($"Status must be one of the following values: {statusListString}.");
+                    return new ValidationResult($"Input must be one of the following: {statusListString}.");
                 }
                 return ValidationResult.Success;
             }

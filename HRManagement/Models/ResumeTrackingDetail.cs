@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using static HRManagement.Attributes.CheckStatus;
 using static HRManagement.Attributes.MinimumAge;
 
 namespace HRManagement.Models
@@ -34,6 +35,7 @@ namespace HRManagement.Models
 
         [StringLength(50)]
         [MinLength(3)]
+        [CheckStatus(new string[] { "Permanent", "Trainee", "Terminated", "Resigned" })]
         public string ApplyingFor { get; set; }
 
         [StringLength(50)]

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using static HRManagement.Attributes.CheckStatus;
 using static HRManagement.Attributes.MinimumAge;
 
 namespace HRManagement.Models
@@ -31,7 +32,7 @@ namespace HRManagement.Models
         [MinLength(3)]
         public string Address { get; set; }
 
-       
+
         [RegularExpression(@"^\d{10}$", ErrorMessage = "Phone number must be exactly 10 digits.")]//with @, you dont need an extra backslash
                                                                                                   //before the escape sequence
         public string PhoneNumber { get; set; }
@@ -45,11 +46,13 @@ namespace HRManagement.Models
 
         [StringLength(50)]
         [MinLength(3)]
+        [CheckStatus(new string[] { "Permanent", "Trainee", "Terminated","Resigned" })]
         public string Status { get; set; }
 
 
         [StringLength(50)]
         [MinLength(3)]
+        [CheckStatus(new string[] { "Associate Software Engineer", "Software Engineer", "Manager", "Team Lead" })]
         public string Position { get; set; }
 
         [DataType(DataType.DateTime)]

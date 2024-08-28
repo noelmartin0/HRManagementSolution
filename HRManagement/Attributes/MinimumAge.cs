@@ -21,7 +21,7 @@ namespace HRManagement.Attributes
                     var age = today.Year - dateOfBirth.Year;
 
                     // Adjust age if the birthday has not occurred yet this year
-                   // if (dateOfBirth.Date > today.AddYears(-age)) age--;
+                    if (dateOfBirth.Date > today.AddYears(-age)) age--;
 
                     if (age < _minimumAge)
                     {
