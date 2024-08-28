@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using static HRManagement.Attributes.CheckStatus;
+
 namespace HRManagement.Models
 {
     [Table("EmployeeTrainingDetails")]
@@ -17,6 +19,7 @@ namespace HRManagement.Models
 
         [StringLength(50)]
         [MinLength(5)]
+        [CheckStatus(new string[] { "Completed", "Ongoing" })]
         public string TrainingStatus { get; set; }
 
         

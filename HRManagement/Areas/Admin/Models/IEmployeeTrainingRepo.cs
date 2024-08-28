@@ -28,7 +28,7 @@ namespace HRManagement.Areas.Admin.Models
         private void CheckForUpdatingPayroll(EmployeeTrainingDetail model)
         {
             var trainingIds = _context.EmployeeTrainingDetails
-                 .Where(et => et.EmployeeId == model.EmployeeId && (et.TrainingStatus == "Completed"|| et.TrainingStatus == "completed"))
+                 .Where(et => et.EmployeeId == model.EmployeeId && (et.TrainingStatus == "Completed"))
                  .Select(et => et.TrainingId)
                  .ToList();
 

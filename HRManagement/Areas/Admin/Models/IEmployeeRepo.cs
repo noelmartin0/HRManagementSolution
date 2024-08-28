@@ -178,7 +178,7 @@ namespace HRManagement.Models
             {
                 employee.Status = newStatus;
                
-                if (newStatus == "Resigned")
+                if (newStatus == "Resigned" || newStatus == "Terminated")
                 {
                     CreateResignationDetail(employee);
                 }
