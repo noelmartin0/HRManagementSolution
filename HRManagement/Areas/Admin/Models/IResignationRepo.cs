@@ -31,12 +31,21 @@
         public ResignationDetail GetResignationById(int id)
         {
             ResignationDetail r = _context.ResignationDetails.Find(id);
+            if (r == null)
+            {
+                throw new InvalidOperationException($"There is no Resignation Details associated with the ID = {id}");
+            }
             return r;
         }
 
         void IResignationRepo.DeleteEmployeeResignation(int id)
         {
+
             ResignationDetail r = _context.ResignationDetails.Find(id);
+            if (r == null)
+            {
+                throw new InvalidOperationException($"There is no Resignation Details associated with the ID = {id}");
+            }
             _context.ResignationDetails.Remove(r);  
             _context.SaveChanges();
         }
@@ -44,6 +53,10 @@
         ResignationDetail IResignationRepo.GetResignationByEmployeeId(int empid)
         {
             ResignationDetail r = _context.ResignationDetails.FirstOrDefault(x => x.EmployeeId==empid);
+            if (r == null)
+            {
+                throw new InvalidOperationException($"No Emmployee is found having ID ={empid}");
+            }
             return r;
         }
     }

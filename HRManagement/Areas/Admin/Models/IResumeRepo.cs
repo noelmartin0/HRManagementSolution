@@ -34,9 +34,13 @@ namespace HRManagement.Areas.Admin.Models
             }
 
             public void DeleteResume(int id)
+         {
+            ResumeTrackingDetail m = _context.ResumeTrackingDetails.Find(id);
+            if (m == null)
             {
-                ResumeTrackingDetail m = _context.ResumeTrackingDetails.Find(id);
-                _context.ResumeTrackingDetails.Remove(m);
+                throw new InvalidOperationException($"No Resume(s) are found having ID = {id}");
+            }
+            _context.ResumeTrackingDetails.Remove(m);
             _context.SaveChanges();
 
             }
@@ -48,13 +52,23 @@ namespace HRManagement.Areas.Admin.Models
 
             public ResumeTrackingDetail GetResumeById(int id)
             {
-                ResumeTrackingDetail m = _context.ResumeTrackingDetails.Find(id);
+            ResumeTrackingDetail m = _context.ResumeTrackingDetails.Find(id);
+            if (m == null)
+            {
+                throw new InvalidOperationException($"No Resume(s) are found having ID = {id}");
+            }
                 return m;
             }
 
         public void HireEmployee(int id,EmployeeDetail employeefromPostMethod)
         {
             ResumeTrackingDetail resume = _context.ResumeTrackingDetails.Find(id);
+
+            if (resume == null)
+            {
+                throw new InvalidOperationException($"No Resume(s) are found having ID = {id}");
+            }
+
             EmployeeDetail emp = new EmployeeDetail();
             emp.EmployeeName = resume.ApplicantName;
             emp.DateOfBirth = resume.DateOfBirth;
@@ -78,8 +92,13 @@ namespace HRManagement.Areas.Admin.Models
 
         public void UpdateResume(int id, ResumeTrackingDetail resume)
             {
-                ResumeTrackingDetail r = _context.ResumeTrackingDetails.Find(id);
-                r.ApplicantName = resume.ApplicantName;
+            ResumeTrackingDetail r = _context.ResumeTrackingDetails.Find(id);
+            if (r == null)
+            {
+                throw new InvalidOperationException($"No Resume(s) are found having ID = {id}");
+            }
+
+            r.ApplicantName = resume.ApplicantName;
                 r.PhoneNo = resume.PhoneNo;
                 r.Email = resume.Email;
                 r.Address = resume.Address;

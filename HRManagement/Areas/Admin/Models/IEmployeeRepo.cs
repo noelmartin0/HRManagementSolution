@@ -41,6 +41,10 @@ namespace HRManagement.Models
         public void DeleteEmployee(int id)
         {
             EmployeeDetail e = _context.EmployeeDetails.Find(id);
+            if (e == null)
+            {
+                throw new InvalidOperationException($"No Emmployee is found having ID = {id}");
+            }
             _context.EmployeeDetails.Remove(e);
             _context.SaveChanges();
 
@@ -57,7 +61,12 @@ namespace HRManagement.Models
 
         public EmployeeDetail GetEmployeeById(int id)
         {
+
             EmployeeDetail model = _context.EmployeeDetails.Find(id);
+            if(model == null)
+            {
+                throw new InvalidOperationException($"No Emmployee is found having ID ={id}");
+            }
             return model;
         }
 
@@ -86,6 +95,10 @@ namespace HRManagement.Models
             
             
             EmployeeDetail e = _context.EmployeeDetails.Find(id);
+            if (e == null)
+            {
+                throw new InvalidOperationException($"No Emmployee is found having ID = {id}");
+            }
             if (e != null)
             {
                 if (!employee.EmployeeName.Equals("string"))
