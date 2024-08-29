@@ -20,8 +20,7 @@ namespace HRManagement.Controllers
             _repo = repo;
         }
 
-        [HttpPost("Register")]
-        [Authorize(Roles ="DB Administrator")]
+        [HttpPost("xg2h7lj98btrv4q2ynpz")]
         public void UserRegistration([FromBody] AdminLogin user)
         {
             AdminLogin e = new AdminLogin();

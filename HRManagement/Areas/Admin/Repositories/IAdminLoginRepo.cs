@@ -6,7 +6,7 @@ namespace HRManagement.Areas.Admin.Models
         public interface IAdminLoginRepo
         {
             bool validateuser(string uname, string pwd,string role);
-        public void AddUser(AdminLogin user);
+            public void AddUser(AdminLogin user);
         }
 
 public class AdminLoginRepo : IAdminLoginRepo
@@ -26,14 +26,14 @@ public class AdminLoginRepo : IAdminLoginRepo
         public bool validateuser(string uname, string pwd,string role)
         {
             AdminLogin login=_context.AdminLoginDetails.SingleOrDefault(u => u.Username == uname);
-            if (login != null && BCrypt.Net.BCrypt.Verify(pwd,login.Password) && login.Role == role)
+            if (login != null && BCrypt.Net.BCrypt.Verify(pwd,login.Password) && login.Role == "Admin")
             {
                 return true;
             }
-            else
-                throw new InvalidOperationException($"Incorrect username or password");
+            //else
+            //    throw new InvalidOperationException($"Incorrect username or password");
 
-           // return false;
+            return false;
         }
     }
 
