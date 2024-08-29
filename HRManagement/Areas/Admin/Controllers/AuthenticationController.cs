@@ -21,6 +21,7 @@ namespace HRManagement.Controllers
         }
 
         [HttpPost("Register")]
+        [Authorize(Roles ="DB Administrator")]
         public void UserRegistration([FromBody] AdminLogin user)
         {
             AdminLogin e = new AdminLogin();
