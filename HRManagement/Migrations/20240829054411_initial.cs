@@ -186,8 +186,8 @@ namespace HRManagement.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     EmployeeId = table.Column<int>(type: "int", nullable: false),
                     DepartmentId = table.Column<int>(type: "int", nullable: false),
-                    EvaluatorName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    EvaluationPeriod = table.Column<int>(type: "int", nullable: false),
+                    EvaluatorName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    EvaluationPeriod = table.Column<int>(type: "int", nullable: true),
                     XoxoPoints = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

@@ -16,10 +16,10 @@ namespace HRManagement.Models
 
         [StringLength(50)]
         [MinLength(3)]
-        public string EvaluatorName { get; set; }
+        public string? EvaluatorName { get; set; } = "NULL";
 
         [Required]
-        public int EvaluationPeriod { get; set; }
+        public int? EvaluationPeriod { get; set; } = 0;
 
         public int XoxoPoints { get; set; } = 0;
 
