@@ -7,6 +7,7 @@
         PerformanceDetail GetPerformanceById(int id);
         void DeleteEmployeePerformance(int id);
         PerformanceDetail GetPerformanceByEmpID(int empid);
+       // public void UpdateEmployeeCredentials(int empId,int deptId);
 
     }
 
@@ -36,6 +37,7 @@
             PerformanceDetail e = _context.PerformanceDetails.Find(id);
             e.EvaluatorName = performance.EvaluatorName;
             e.EvaluationPeriod = performance.EvaluationPeriod;
+            e.XoxoPoints = performance.XoxoPoints;
             _context.SaveChanges();
         }
 
@@ -51,6 +53,10 @@
             return _context.PerformanceDetails.FirstOrDefault(e => e.EmployeeId == empid);
            
         }
+
+
+      
+
     }
 }
 

@@ -22,13 +22,22 @@ namespace HRManagement.Areas.Admin.Models
             _context.EmployeeTrainingDetails.Add(model);
             _context.SaveChanges();
             CheckForUpdatingPayroll(model);
+            if (model.TrainingStatus == "Completed")
+                UpdateXoxoPoints(model.EmployeeId);
 
+        }
+
+        private void UpdateXoxoPoints(int empId)
+        {
+            PerformanceDetail performanceDetail = _context.PerformanceDetails.FirstOrDefault(e => e.EmployeeId == empId);
+            performanceDetail.XoxoPoints += 50;
+            _context.SaveChanges();
         }
 
         private void CheckForUpdatingPayroll(EmployeeTrainingDetail model)
         {
             var trainingIds = _context.EmployeeTrainingDetails
-                 .Where(et => et.EmployeeId == model.EmployeeId && (et.TrainingStatus == "Completed"))
+                 .Where(et => et.EmployeeId == model.EmployeeId && et.TrainingStatus == "Completed")
                  .Select(et => et.TrainingId)
                  .ToList();
 

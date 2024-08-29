@@ -61,9 +61,6 @@ namespace HRManagement.Models
         //       .HasOne(e => e.TrainingDetail)
         //       .WithMany(d => d.EmployeeTrainingDetail)
         //       .HasForeignKey(e => e.TrainingId);
-
-
-
         //}
 
 

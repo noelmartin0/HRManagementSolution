@@ -71,8 +71,6 @@ namespace HRManagement.Models
         //public PayrollDetail PayrollDetail { get; set; }
         //public PerformanceDetail PerformanceDetail { get; set; }
         //public ResignationDetail ResignationDetail { get; set; }
-
-
         //public ICollection<EmployeeTrainingDetail> EmployeeTrainingDetail { get; set; }
 
     }

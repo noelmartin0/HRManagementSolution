@@ -68,7 +68,7 @@ namespace HRManagement.Areas.Admin.Models
             {
                 throw new InvalidOperationException($"No Resume(s) are found having ID = {id}");
             }
-
+            
             EmployeeDetail emp = new EmployeeDetail();
             emp.EmployeeName = resume.ApplicantName;
             emp.DateOfBirth = resume.DateOfBirth;
