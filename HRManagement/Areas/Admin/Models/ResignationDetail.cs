@@ -34,6 +34,6 @@ namespace HRManagement.Models
         public string PhoneNumber { get; set; }
 
 
-      //  public EmployeeDetail EmployeeDetail { get; set; }
+        //public EmployeeDetail EmployeeDetail { get; set; }
     }
 }

@@ -23,7 +23,7 @@ namespace HRManagement.Models
 
         public int XoxoPoints { get; set; } = 0;
 
-       // public EmployeeDetail EmployeeDetail { get; set; }
+        //public EmployeeDetail EmployeeDetail { get; set; }
 
 
 

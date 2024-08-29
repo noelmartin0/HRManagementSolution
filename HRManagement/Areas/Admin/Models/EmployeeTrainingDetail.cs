@@ -13,8 +13,8 @@ namespace HRManagement.Models
         public int EmployeeId { get; set; }
 
         public int TrainingId { get; set; }
-       
-        
+
+
         //public TrainingDetail TrainingDetail { get; set; }
         //public EmployeeDetail EmployeeDetail { get; set; }
 
