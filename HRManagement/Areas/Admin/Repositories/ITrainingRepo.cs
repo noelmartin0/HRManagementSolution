@@ -21,7 +21,7 @@ namespace HRManagement.Areas.Admin.Models
         HRManagementDBContext _context;
         public TrainingRepo(HRManagementDBContext _context)
         {
-            this._context= _context;    
+            this._context = _context;
 
         }
         public void AddTraining(TrainingDetail trainingdetail)
@@ -42,23 +42,23 @@ namespace HRManagement.Areas.Admin.Models
 
         }
 
-      
-            public List<EmployeeDetail> GetAllEmployeesByTrainingId(int trainingId)
-            {
-                // this is where it fetches all EmployeeTrainingDetails where TrainingId matches the passed TID
-                var employeeIds = _context.EmployeeTrainingDetails
-                    .Where(et => et.TrainingId == trainingId)
-                    .Select(et => et.EmployeeId)
-                    .ToList();
 
-                // Fetching EmployeeDetails for the retrieved EmployeeIds
-                List<EmployeeDetail> employees = _context.EmployeeDetails
-                    .Where(e => employeeIds.Contains(e.EmployeeId))
-                    .ToList();
+        public List<EmployeeDetail> GetAllEmployeesByTrainingId(int trainingId)
+        {
+            // this is where it fetches all EmployeeTrainingDetails where TrainingId matches the passed TID
+            var employeeIds = _context.EmployeeTrainingDetails
+                .Where(et => et.TrainingId == trainingId)
+                .Select(et => et.EmployeeId)
+                .ToList();
+            
+            // Fetching EmployeeDetails for the retrieved EmployeeIds
+            List<EmployeeDetail> employees = _context.EmployeeDetails
+                .Where(e => employeeIds.Contains(e.EmployeeId))
+                .ToList();
 
-                return employees;
-            }
-
+            return employees;
+        
+    }
         
 
         public List<TrainingDetail> GetAllTrainings()

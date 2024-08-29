@@ -83,6 +83,8 @@ namespace HRManagement.Areas.Admin.Models
             {
                 record.TrainingStatus = model.TrainingStatus;
                 _context.SaveChanges();
+                if (model.TrainingStatus == "Completed")
+                    UpdateXoxoPoints(model.EmployeeId);
                 CheckForUpdatingPayroll(record);
             }
 
@@ -90,7 +92,9 @@ namespace HRManagement.Areas.Admin.Models
 
         private void UpdatePayroll(int empid)
         {
+            
             PayrollDetail payroll = _context.PayrollDetails.FirstOrDefault(e => e.EmployeeId == empid);
+
             payroll.Basicpay = payroll.Basicpay * (decimal)0.15 + payroll.Basicpay;
             payroll.CalculatePay();
             _context.SaveChanges();

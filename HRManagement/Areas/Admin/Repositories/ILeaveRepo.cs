@@ -53,18 +53,30 @@
                 _context.SaveChanges();
 
             }
+            else
+                throw new InvalidOperationException($"No records found for Leave ID {id} ");
+
 
         }
 
         LeaveDetail ILeaveRepo.GetLeaveByEmployeeId(int empid)
         {
-            return _context.LeaveDetails.FirstOrDefault(e => e.EmployeeId == empid);
             
+            LeaveDetail leave = _context.LeaveDetails.FirstOrDefault(e => e.EmployeeId == empid);
+            if (leave != null)
+            return leave;
+            else
+                throw new InvalidOperationException($"No records found for Employee ID {empid} ");
+
         }
 
         LeaveDetail ILeaveRepo.GetLeaveByLeaveId(int id)
         {
-           return _context.LeaveDetails.Find(id);
+            LeaveDetail leave = _context.LeaveDetails.Find(id);
+            if (leave != null)
+                return leave;
+            else
+                throw new InvalidOperationException($"No records found for Leave ID {id} ");
         }
 
         public void UpdateByEmployeeId(int empid, LeaveDetail leave)
@@ -104,6 +116,8 @@
                 // Save changes to the database
                 _context.SaveChanges();
             }
+            else
+                throw new InvalidOperationException($"No records found for Employee ID {empid} ");
         }
 
 

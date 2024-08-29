@@ -38,7 +38,7 @@ namespace HRManagement.Areas.Admin.Models
             ResumeTrackingDetail m = _context.ResumeTrackingDetails.Find(id);
             if (m == null)
             {
-                throw new InvalidOperationException($"No Resume(s) are found having ID = {id}");
+                throw new InvalidOperationException($"No Resume is found having ID = {id}");
             }
             _context.ResumeTrackingDetails.Remove(m);
             _context.SaveChanges();
@@ -55,7 +55,7 @@ namespace HRManagement.Areas.Admin.Models
             ResumeTrackingDetail m = _context.ResumeTrackingDetails.Find(id);
             if (m == null)
             {
-                throw new InvalidOperationException($"No Resume(s) are found having ID = {id}");
+                throw new InvalidOperationException($"No Resume is found having ID = {id}");
             }
                 return m;
             }
@@ -66,7 +66,7 @@ namespace HRManagement.Areas.Admin.Models
 
             if (resume == null)
             {
-                throw new InvalidOperationException($"No Resume(s) are found having ID = {id}");
+                throw new InvalidOperationException($"No Resume is found having ID = {id}");
             }
             
             EmployeeDetail emp = new EmployeeDetail();
@@ -95,7 +95,7 @@ namespace HRManagement.Areas.Admin.Models
             ResumeTrackingDetail r = _context.ResumeTrackingDetails.Find(id);
             if (r == null)
             {
-                throw new InvalidOperationException($"No Resume(s) are found having ID = {id}");
+                throw new InvalidOperationException($"No Resume is found having ID = {id}");
             }
 
             r.ApplicantName = resume.ApplicantName;

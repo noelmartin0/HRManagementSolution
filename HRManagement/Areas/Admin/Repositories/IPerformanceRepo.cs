@@ -29,33 +29,54 @@
         public PerformanceDetail GetPerformanceById(int id)
         {
             PerformanceDetail m=_context.PerformanceDetails.Find(id);
+            if(m==null)
+              
+                    throw new InvalidOperationException($"No Performance details found for Performance ID {id}");
+            else
             return m;
         }
 
         public void UpdateEmployeePerformance(int id, PerformanceDetail performance)
         {
             PerformanceDetail e = _context.PerformanceDetails.Find(id);
-            e.EvaluatorName = performance.EvaluatorName;
-            e.EvaluationPeriod = performance.EvaluationPeriod;
-            e.XoxoPoints = performance.XoxoPoints;
-            _context.SaveChanges();
+            if (e != null)
+            {
+                e.EvaluatorName = performance.EvaluatorName;
+                e.EvaluationPeriod = performance.EvaluationPeriod;
+                e.XoxoPoints = performance.XoxoPoints;
+                _context.SaveChanges();
+            }
+            else throw new InvalidOperationException($"No Performance details found for Performance ID {id}");
+
         }
 
         public void DeleteEmployeePerformance(int id)
         {
+
             PerformanceDetail p = _context.PerformanceDetails.Find(id);
-            _context.PerformanceDetails.Remove(p);
-            _context.SaveChanges();
+            if (p != null)
+            {
+                _context.PerformanceDetails.Remove(p);
+                _context.SaveChanges();
+            }
+            else throw new InvalidOperationException($"No Performance details found for Performance ID {id}");
+
         }
 
         public PerformanceDetail GetPerformanceByEmpID(int empid)
         {
-            return _context.PerformanceDetails.FirstOrDefault(e => e.EmployeeId == empid);
-           
+
+            PerformanceDetail p = _context.PerformanceDetails.FirstOrDefault(e => e.EmployeeId == empid);
+            if(p != null)
+            return p;
+            else             
+                throw new InvalidOperationException($"No Performance details found for Employee ID {empid}");
+
+
         }
 
 
-      
+
 
     }
 }

@@ -33,8 +33,14 @@
         public void DeleteEmployeePayroll(int id)
         {
            PayrollDetail p = _context.PayrollDetails.Find(id);
-            _context.PayrollDetails.Remove(p);
-            _context.SaveChanges();
+            if (p != null)
+            {
+                _context.PayrollDetails.Remove(p);
+                _context.SaveChanges();
+            }
+            else
+                throw new InvalidOperationException($"No payroll details found for Payroll ID {id}");
+
         }
 
         public List<PayrollDetail> GetAllPayrolls()
@@ -45,13 +51,20 @@
         public PayrollDetail GetPayrollByEmpID(int empid)
         {
             PayrollDetail e = _context.PayrollDetails.FirstOrDefault(e => e.EmployeeId == empid);
-            return e;
+            if(e != null)
+                return e;
+            else
+                throw new InvalidOperationException($"No payroll details found for Employee ID {empid}");
+
         }
 
         public PayrollDetail GetPayrollByID(int id)
         {
             PayrollDetail e = _context.PayrollDetails.Find(id);
-            return e;
+            if (e != null)
+                return e;
+            else
+                throw new InvalidOperationException($"No payroll details found for Payroll ID {id}");
         }
 
         public void UpdateEmployeePayroll(int empid, PayrollDetail payroll)
@@ -61,27 +74,29 @@
             {
                 throw new InvalidOperationException($"No payroll details found for Employee ID {empid}");
             }
-
-
-            if (payroll.Basicpay != 0)
+            else
             {
-                existingPayroll.Basicpay = payroll.Basicpay;
+                                
+                if (payroll.Basicpay != 0)
+                {
+                    existingPayroll.Basicpay = payroll.Basicpay;
+                }
+
+                if (payroll.Allowance != 0)
+                {
+                    existingPayroll.Allowance = payroll.Allowance;
+                }
+
+                if (payroll.Deduction != 0)
+                {
+                    existingPayroll.Deduction = payroll.Deduction;
+                }
+
+
+                existingPayroll.CalculatePay();
+
+                _context.SaveChanges();
             }
-
-            if (payroll.Allowance != 0)
-            {
-                existingPayroll.Allowance = payroll.Allowance;
-            }
-
-            if (payroll.Deduction != 0)
-            {
-                existingPayroll.Deduction = payroll.Deduction;
-            }
-
-
-            existingPayroll.CalculatePay();
-
-            _context.SaveChanges();
         }
 
         public void DeletePayrollByEmpID(int empid)

@@ -97,10 +97,7 @@ namespace HRManagement.Models
             
             
             EmployeeDetail e = _context.EmployeeDetails.Find(id);
-            if (e == null)
-            {
-                throw new InvalidOperationException($"No Emmployee is found having ID = {id}");
-            }
+         
             if (e != null)
             {
                 if (!employee.EmployeeName.Equals("string"))
@@ -164,6 +161,8 @@ namespace HRManagement.Models
                 // Save changes to the context
                 _context.SaveChanges();
             }
+            else throw new InvalidOperationException($"No Emmployee is found having ID = {id}");
+
 
 
         }
