@@ -30,7 +30,10 @@ public class AdminLoginRepo : IAdminLoginRepo
             {
                 return true;
             }
-            return false;
+            else
+                throw new InvalidOperationException($"Incorrect username or password");
+
+           // return false;
         }
     }
 
