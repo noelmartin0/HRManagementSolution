@@ -41,6 +41,6 @@ namespace HRManagement.Models
             DaysRemaining = TotalDays - DaysTaken;
         }
        
-       // public EmployeeDetail EmployeeDetail { get; set; }
+        //public EmployeeDetail EmployeeDetail { get; set; }
     }
 }

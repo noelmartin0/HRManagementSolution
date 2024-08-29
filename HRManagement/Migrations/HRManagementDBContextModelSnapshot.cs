@@ -249,6 +249,9 @@ namespace HRManagement.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<int>("XoxoPoints")
+                        .HasColumnType("int");
+
                     b.HasKey("PerformanceId");
 
                     b.HasIndex("EmployeeId")

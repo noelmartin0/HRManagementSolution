@@ -11,15 +11,17 @@ namespace HRManagement.Models
         public int SNo { get; private set; }
 
         public int EmployeeId { get; set; }
-      //  public EmployeeDetail EmployeeDetail { get; set; }
 
         public int TrainingId { get; set; }
-       // public TrainingDetail TrainingDetail { get; set; }
+
+
+        //public TrainingDetail TrainingDetail { get; set; }
+        //public EmployeeDetail EmployeeDetail { get; set; }
 
 
         [StringLength(50)]
         [MinLength(5)]
-        [CheckStatus(new string[] { "Completed", "Ongoing" })]
+        [CheckStatus(new string[] { "Completed", "Ongoing","Dropped" })]
         public string TrainingStatus { get; set; }
 
         

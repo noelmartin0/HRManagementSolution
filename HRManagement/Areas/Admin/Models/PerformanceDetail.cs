@@ -21,10 +21,11 @@ namespace HRManagement.Models
         [Required]
         public int EvaluationPeriod { get; set; }
 
-       
+        public int XoxoPoints { get; set; } = 0;
+
         //public EmployeeDetail EmployeeDetail { get; set; }
 
-        
+
 
     }
 }

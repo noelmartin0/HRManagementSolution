@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
+using HRManagement.Areas.Admin.Models;
 namespace HRManagement.Models
 {
     public interface IEmployeeRepo
@@ -33,6 +34,7 @@ namespace HRManagement.Models
             _context.SaveChanges();
             AddEmployeePayroll(employee.EmployeeId);
             AddEmployeeLeave(employee.EmployeeId);
+            AddEmployeePerformance(employee.EmployeeId,employee.DepartmentId);
 
         }
 
@@ -227,6 +229,19 @@ namespace HRManagement.Models
 
         }
 
+
+        private void AddEmployeePerformance(int empId,int deptId)
+        {
+            var performanceDetail = new PerformanceDetail();
+            performanceDetail.EmployeeId = empId;
+            performanceDetail.DepartmentId = deptId;
+            _context.PerformanceDetails.Add(performanceDetail);
+            _context.SaveChanges();
+
+
+        }
+
+
         public List<EmployeeDetail> GetEmployeeByName(string name)
         {
             return _context.EmployeeDetails
@@ -238,5 +253,7 @@ namespace HRManagement.Models
         {
             return _context.EmployeeDetails.Where(e=>e.DepartmentId == deptid).ToList();
         }
+
+
     }
 }
