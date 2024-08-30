@@ -12,12 +12,18 @@ namespace HRManagement.Attributes
             }
             protected override ValidationResult? IsValid(object value, ValidationContext validationContext)
             {
-                if (!_statuslist.Contains(value))
+                if ((string) value == "string")
+                {
+                    Console.WriteLine("Working");
+                    return ValidationResult.Success;
+                }
+                else if (!_statuslist.Contains(value))
                 {
                     var statusListString = string.Join(", ", _statuslist);
                     return new ValidationResult($"Input must be one of the following: {statusListString}.");
                 }
-                return ValidationResult.Success;
+                else
+                    return ValidationResult.Success;
             }
         }
     }

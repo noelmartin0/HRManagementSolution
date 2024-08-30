@@ -32,7 +32,7 @@ namespace HRManagement.Models
             
             _context.EmployeeDetails.Add(employee);
             _context.SaveChanges();
-            AddEmployeePayroll(employee.EmployeeId);
+            AddEmployeePayroll(employee.EmployeeId,employee.Position);
             AddEmployeeLeave(employee.EmployeeId);
             AddEmployeePerformance(employee.EmployeeId,employee.DepartmentId);
 
@@ -157,7 +157,20 @@ namespace HRManagement.Models
                 {
                     e.PreviousTrainingCertifications = employee.PreviousTrainingCertifications;
                 }
-
+                PayrollDetail payrollDetail = _context.PayrollDetails.FirstOrDefault(p => p.EmployeeId == e.EmployeeId);
+                switch (e.Position)
+                {
+                    case "Software Engineer":
+                        payrollDetail.Basicpay = 20000;
+                        break;
+                    case "Team Lead":
+                        payrollDetail.Basicpay = 40000;
+                        break;
+                    case "Manager":
+                        payrollDetail.Basicpay = 60000;
+                        break;
+                }
+                payrollDetail.CalculatePay();
                 // Save changes to the context
                 _context.SaveChanges();
             }
@@ -205,11 +218,20 @@ namespace HRManagement.Models
             _context.SaveChanges();
         }
 
-        private void AddEmployeePayroll(int empId)
+        private void AddEmployeePayroll(int empId, string position)
         {
             PayrollDetail payrollDetail = new PayrollDetail();
             payrollDetail.EmployeeId = empId;
             payrollDetail.SetPay();
+            switch(position)
+            {
+                case "Software Engineer": payrollDetail.Basicpay = 20000;
+                    break;
+                case "Team Lead": payrollDetail.Basicpay = 40000;
+                    break;
+                case "Manager": payrollDetail.Basicpay = 60000;
+                    break;
+            }
             payrollDetail.CalculatePay();
             _context.PayrollDetails.Add(payrollDetail);
             _context.SaveChanges();
