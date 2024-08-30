@@ -13,9 +13,9 @@ namespace HRManagement.Areas.Admin.Controllers
     public class DepartmentController : ControllerBase
     {
         IDepartmentRepo _dep;
-        public DepartmentController(IDepartmentRepo _dep)
+        public DepartmentController(IDepartmentRepo dep)
         {
-            this._dep = _dep;
+            _dep = dep;
         }
 
 
