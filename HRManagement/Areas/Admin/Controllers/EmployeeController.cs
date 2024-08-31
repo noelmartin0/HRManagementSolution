@@ -34,7 +34,7 @@ namespace HRManagement.Areas.Admin.Controllers
             return _emp.GetEmployeeById(EmployeeId);
         }
 
-        [HttpGet("EmployeeName")]
+        [HttpGet("EmployeeName/{EmployeeName}")]
 
         public List<EmployeeDetail> Get(string EmployeeName)
         {

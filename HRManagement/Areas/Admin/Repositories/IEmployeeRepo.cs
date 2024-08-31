@@ -106,7 +106,7 @@ namespace HRManagement.Models
                 }
 
 
-                if (!employee.DateOfBirth.Equals("0000-00-00T00:00:00.765Z"))
+                if (!employee.DateOfBirth.Equals("2000-02-02T02:02:02.765Z"))
                 {
                     e.DateOfBirth = employee.DateOfBirth;
                 }
@@ -122,7 +122,7 @@ namespace HRManagement.Models
                     e.Nationality = employee.Nationality;
                 }
 
-                if (!employee.PhoneNumber.Equals("string"))
+                if (!employee.PhoneNumber.Equals("0123456789"))
                 {
                     e.PhoneNumber = employee.PhoneNumber;
                 }
@@ -140,15 +140,33 @@ namespace HRManagement.Models
                 if (!employee.Status.Equals("string"))
                 {
                     e.Status = employee.Status;
+                    if (e.Status.Equals("Resigned") || e.Status.Equals( "Terminated"))
+                    {
+                        CreateResignationDetail(e);
+                    }
                 }
 
                 if (!employee.Position.Equals("string"))
                 {
                     e.Position = employee.Position;
+                    PayrollDetail payrollDetail = _context.PayrollDetails.FirstOrDefault(p => p.EmployeeId == e.EmployeeId);
+                    switch (e.Position)
+                    {
+                        case "Software Engineer":
+                            payrollDetail.Basicpay = 20000;
+                            break;
+                        case "Team Lead":
+                            payrollDetail.Basicpay = 40000;
+                            break;
+                        case "Manager":
+                            payrollDetail.Basicpay = 60000;
+                            break;
+                    }
+                    payrollDetail.CalculatePay();
                 }
 
 
-                if (!employee.JoiningDate.Equals("0000-00-00T00:00:00.765Z"))
+                if (!employee.JoiningDate.Equals("2000-02-02T02:02:02.765Z"))
                 {
                     e.JoiningDate = employee.JoiningDate;
                 }
@@ -162,21 +180,7 @@ namespace HRManagement.Models
                 {
                     e.PreviousTrainingCertifications = employee.PreviousTrainingCertifications;
                 }
-                PayrollDetail payrollDetail = _context.PayrollDetails.FirstOrDefault(p => p.EmployeeId == e.EmployeeId);
-                switch (e.Position)
-                {
-                    case "Software Engineer":
-                        payrollDetail.Basicpay = 20000;
-                        break;
-                    case "Team Lead":
-                        payrollDetail.Basicpay = 40000;
-                        break;
-                    case "Manager":
-                        payrollDetail.Basicpay = 60000;
-                        break;
-                }
-                payrollDetail.CalculatePay();
-                // Save changes to the context
+                
                 _context.SaveChanges();
             }
             else throw new InvalidOperationException($"No Emmployee is found having ID = {id}");
@@ -196,8 +200,8 @@ namespace HRManagement.Models
             if (employee.Status != newStatus)
             {
                 employee.Status = newStatus;
-               
-                if (newStatus == "Resigned" || newStatus == "Terminated")
+
+                if (newStatus.Equals("Resigned") || newStatus.Equals("Terminated"))
                 {
                     CreateResignationDetail(employee);
                 }
@@ -220,7 +224,6 @@ namespace HRManagement.Models
             };
             
             _context.ResignationDetails.Add(resignationDetail);
-            _context.SaveChanges();
         }
 
         private void AddEmployeePayroll(int empId, string position)

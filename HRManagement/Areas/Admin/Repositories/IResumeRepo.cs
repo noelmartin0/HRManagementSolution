@@ -104,7 +104,7 @@ namespace HRManagement.Areas.Admin.Models
                 r.ApplicantName = resume.ApplicantName;
             }
 
-            if (!resume.PhoneNo.Equals("string"))
+            if (!resume.PhoneNo.Equals("0123456789"))
             {
                 r.PhoneNo = resume.PhoneNo;
             }
@@ -119,7 +119,7 @@ namespace HRManagement.Areas.Admin.Models
                 r.Address = resume.Address;
             }
 
-            if (!resume.DateOfBirth.Equals("0000-00-00T00:00:00.765Z"))
+            if (!resume.DateOfBirth.Equals("2000-02-02T02:02:02.765Z"))
             {
                 r.DateOfBirth = resume.DateOfBirth;
             }

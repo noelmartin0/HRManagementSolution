@@ -52,7 +52,7 @@ namespace HRManagement.Controllers
                         new Claim(ClaimTypes.Role,login.Role)
                     }),
 
-                    expires: DateTime.Now.AddMinutes(6),
+                    expires: DateTime.Now.AddMinutes(200),
                     signingCredentials: signinCredentials
                 );
                 var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
@@ -61,7 +61,7 @@ namespace HRManagement.Controllers
                     Domain = "localhost",
                     Path = "/",
                     Secure = true,
-                    Expires = DateTime.Now.AddMinutes(6),
+                    Expires = DateTime.Now.AddMinutes(60),
                     HttpOnly = true,
                     IsEssential = true
 
