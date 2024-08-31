@@ -98,20 +98,70 @@ namespace HRManagement.Areas.Admin.Models
                 throw new InvalidOperationException($"No Resume is found having ID = {id}");
             }
 
-            r.ApplicantName = resume.ApplicantName;
-                r.PhoneNo = resume.PhoneNo;
-                r.Email = resume.Email;
-                r.Address = resume.Address;
-                r.DateOfBirth = resume.DateOfBirth;
-                r.Nationality = resume.Nationality;
-                r.ApplyingFor = resume.ApplyingFor;
-                r.Experience = resume.Experience;
-                r.Specialization = resume.Specialization;
-                r.AreaOfInterest = resume.AreaOfInterest;
-                r.Qualification = resume.Qualification;
-            r.Certifications = resume.Certifications;
-                _context.SaveChanges();
+
+            if (!resume.ApplicantName.Equals("string"))
+            {
+                r.ApplicantName = resume.ApplicantName;
             }
+
+            if (!resume.PhoneNo.Equals("string"))
+            {
+                r.PhoneNo = resume.PhoneNo;
+            }
+
+            if (!resume.Email.Equals("user@example.com"))
+            {
+                r.Email = resume.Email;
+            }
+
+            if (!resume.Address.Equals("string"))
+            {
+                r.Address = resume.Address;
+            }
+
+            if (!resume.DateOfBirth.Equals("0000-00-00T00:00:00.765Z"))
+            {
+                r.DateOfBirth = resume.DateOfBirth;
+            }
+
+            if (!resume.Nationality.Equals("string"))
+            {
+                r.Nationality = resume.Nationality;
+            }
+
+            if (!resume.ApplyingFor.Equals("string"))
+            {
+                r.ApplyingFor = resume.ApplyingFor;
+            }
+
+            if (!resume.Experience.Equals("string"))
+            {
+                r.Experience = resume.Experience;
+            }
+
+            if (!resume.Specialization.Equals("string"))
+            {
+                r.Specialization = resume.Specialization;
+            }
+
+            if (!resume.AreaOfInterest.Equals("string"))
+            {
+                r.AreaOfInterest = resume.AreaOfInterest;
+            }
+
+            if (!resume.Qualification.Equals("string"))
+            {
+                r.Qualification = resume.Qualification;
+            }
+
+            if (!resume.Certifications.Equals("string"))
+            {
+                r.Certifications = resume.Certifications;
+            }
+
+            _context.SaveChanges();
+
+        }
 
         private void AddEmployeePayroll(int empId)
         {

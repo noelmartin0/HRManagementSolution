@@ -105,9 +105,12 @@ namespace HRManagement.Models
                     e.EmployeeName = employee.EmployeeName;
                 }
 
-               
+
+                if (!employee.DateOfBirth.Equals("0000-00-00T00:00:00.765Z"))
+                {
                     e.DateOfBirth = employee.DateOfBirth;
-                
+                }
+
 
                 if (!employee.Address.Equals("string"))
                 {
@@ -144,9 +147,11 @@ namespace HRManagement.Models
                     e.Position = employee.Position;
                 }
 
-                
+
+                if (!employee.JoiningDate.Equals("0000-00-00T00:00:00.765Z"))
+                {
                     e.JoiningDate = employee.JoiningDate;
-                
+                }
 
                 if (employee.DepartmentId != 0)
                 {
