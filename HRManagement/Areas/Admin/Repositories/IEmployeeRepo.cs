@@ -12,7 +12,7 @@ namespace HRManagement.Models
         void AddEmployee(EmployeeDetail employee);
         void UpdateEmployee(int id, EmployeeDetail employee);
         void DeleteEmployee(int id);
-        public void UpdateEmployeeStatus(int employeeId, string newStatus);
+
 
         
     }
@@ -187,26 +187,6 @@ namespace HRManagement.Models
 
 
 
-        }
-
-
-        public void UpdateEmployeeStatus(int employeeId, string newStatus)
-        {
-            EmployeeDetail employee = _context.EmployeeDetails.Find(employeeId);
-            if (employee == null)
-            {
-                throw new InvalidOperationException("Employee not found.");
-            }
-            if (employee.Status != newStatus)
-            {
-                employee.Status = newStatus;
-
-                if (newStatus.Equals("Resigned") || newStatus.Equals("Terminated"))
-                {
-                    CreateResignationDetail(employee);
-                }
-                _context.SaveChanges();
-            }
         }
 
         private void CreateResignationDetail(EmployeeDetail employee)

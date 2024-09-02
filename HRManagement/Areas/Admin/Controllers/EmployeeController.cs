@@ -64,11 +64,6 @@ namespace HRManagement.Areas.Admin.Controllers
 
         }
 
-        [HttpPut("ChangeEmployeeStatus/{EmployeeId}")]
-        public void Put(int EmployeeId, [FromBody] string status)
-        {
-            _emp.UpdateEmployeeStatus(EmployeeId, status);
-        }
 
         // DELETE api/<AdminController>/5
         [HttpDelete("{EmployeeId}")]
