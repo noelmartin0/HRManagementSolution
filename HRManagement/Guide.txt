@@ -1,0 +1,376 @@
+AdminLogin 
+
+Urls:
+Registration[Post] :-
+https://localhost:7067/api/Authentication/xg2h7lj98btrv4q2ynpz
+
+Authentication[Post]:-
+https://localhost:7067/api/Authentication/AdminLogin
+
+Have I been authorised[Get] :-
+https://localhost:7067/api/Authentication/AdminLogin
+
+Json:
+{
+  "username": "Stevic",
+  "password": "Stevic@123"
+}
+
+
+
+
+
+
+Department
+
+Urls:
+Get all departments:-
+https://localhost:7067/api/Admin/Department
+				
+Get department by department id:-
+https://localhost:7067/api/Admin/Department/{DepartmentId}
+
+Add department:-
+https://localhost:7067/api/Admin/Department
+
+Update department:-
+https://localhost:7067/api/Admin/Department/{DepartmentId}
+
+Delete department
+https://localhost:7067/api/Admin/Department/{DepartmentId}
+
+Json:
+{
+  "departmentName": "string"
+}
+
+
+
+Employee
+
+Urls:
+
+Get all employees:-
+https://localhost:7067/api/Admin/employee
+
+Get employee by employee ID:-
+https://localhost:7067/api/Admin/employee/{EmployeeId}
+
+Get employee by employee name:-
+https://localhost:7067/api/Admin/Employee/EmployeeName/{EmployeeName}
+
+Get all employees in a department:-
+https://localhost:7067/api/Admin/employee/Department/{DeptID}
+
+Add an employee:-
+https://localhost:7067/api/Admin/employee
+
+Update employee details:-
+https://localhost:7067/api/Admin/employee/{EmployeeId}
+
+Update employee status:-
+https://localhost:7067/api/Admin/employee/ChangeEmployeeStatus/{EmployeeId}
+
+Delete an employee:-
+https://localhost:7067/api/Admin/employee/{EmployeeId}
+
+ Json:
+{
+  "employeeName": "string",
+  "dateOfBirth": "2000-02-02T02:02:02.765Z",
+  "nationality": "string",
+  "address": "string",
+  "phoneNumber": "0123456789",
+  "email": "user@example.com",
+  "managerId": 0,
+  "status": "string",
+  "position": "string",
+  "joiningDate": "2000-02-02T02:02:02.765Z",
+  "departmentId": 0,
+  "previousTrainingCertifications": "string"
+}
+
+
+
+
+
+
+Employee Training
+
+Urls:
+
+Get all employee training dependancies :-
+https://localhost:7067/api/EmployeeTraining
+
+Add a dependancy:-
+https://localhost:7067/api/EmployeeTraining
+
+Update a dependancy:-
+https://localhost:7067/api/EmployeeTraining/{EmployeeId}/{TrainingId}
+
+Delete a dependancy:-
+https://localhost:7067/api/EmployeeTraining/{EmployeeId}/{TrainingId}
+
+Json:
+{
+  "employeeId": 0,
+  "trainingId": 0,
+  "trainingStatus": "string"
+}
+
+
+
+
+
+Leave
+
+Urls:
+
+Get leave by leave id:-
+https://localhost:7067/api/Admin/Leave/{LeaveId}
+
+Update leave by leave id:-
+https://localhost:7067/api/Admin/Leave/{LeaveId}
+
+Get leave by employee id:-
+https://localhost:7067/api/Admin/Leave/Employee/{EmployeeId}
+
+Update leave by employee id:-
+https://localhost:7067/api/Admin/Leave/Employee/{EmployeeId}
+
+Add an employee leave detail manually:-
+https://localhost:7067/api/Admin/Leave
+
+Json:
+{
+  "employeeId": 0,
+  "sickLeaves": 0,
+  "vacationDays": 0,
+  "holidays": 0,
+  "totalDays": 0,
+  "daysTaken": 26
+}
+
+
+
+
+
+Payroll
+
+Urls:
+
+Get all payrolls:-
+https://localhost:7067/api/Admin/Payroll
+
+Add an employee payroll manually:-
+https://localhost:7067/api/Admin/Payroll
+
+Get payroll by payroll id:-
+https://localhost:7067/api/Admin/Payroll/{PayrollId}
+
+Delete by payroll id:-
+https://localhost:7067/api/Admin/Payroll/{PayrollId}
+
+Get payroll by employee id:-
+https://localhost:7067/Employee/{EmployeeId}
+
+Update payroll by employee id:-
+https://localhost:7067/api/Admin/Payroll/{EmployeeId}
+
+Delete by employee id:-
+https://localhost:7067/api/Admin/Payroll/Employee/{EmployeeId}
+
+Json:
+{
+  "employeeId": 0,
+  "basicpay": 0,
+  "allowance": 0,
+  "deduction": 0
+}
+
+
+
+
+
+
+Performance:
+
+Urls:
+
+Get performance by performance id:-
+https://localhost:7067/api/Admin/Performance/{PerformanceId}
+
+Update performance by performance id:-
+https://localhost:7067/api/Admin/Performance/{PerformanceId}
+
+Delete performance by preformance id:-
+https://localhost:7067/api/Admin/Performance/{PerformanceId}
+
+Get performance by employee id:-
+https://localhost:7067/api/Admin/Performance/Employee/{EmployeeId}
+
+Add performance manually:-
+https://localhost:7067/api/Admin/Performance
+
+Json:
+{
+  "employeeId": 0,
+  "departmentId": 0,
+  "evaluatorName": "string",
+  "evaluationPeriod": 0,
+  "xoxoPoints": 0
+}
+
+
+
+
+
+Resignation:
+
+Urls:
+
+Get resignation by resignation id:-
+https://localhost:7067/api/Admin/Resignation/{ResignationId}
+
+Delete by resignation id:-
+https://localhost:7067/api/Admin/Resignation/{ResignationId}
+
+Get by employee id:-
+https://localhost:7067/api/Admin/Resignation/Employee/{EmployeeId}
+
+Add resignation manually:-
+https://localhost:7067/api/Admin/Resignation
+
+Json:
+{
+  "employeeId": 0,
+  "employeeName": "string",
+  "departmentId": 0,
+  "position": "string",
+  "managerID": 0,
+  "joinDate": "2000-02-02T02:02:02.765Z",
+  "resignDate": "2000-02-02T02:02:02.765Z",
+  "phoneNumber": "0123456789"
+}
+
+
+
+Resume:
+
+Urls:
+
+Post an application:-
+https://localhost:7067/api/Applicant/Resume
+
+Json:
+{
+  "applicantName": "string",
+  "phoneNo": "0123456789",
+  "email": "user@example.com",
+  "qualification": "string",
+  "dateOfBirth": "2000-02-02T02:02:02.765Z",
+  "nationality": "string",
+  "address": "string",
+  "applyingFor": "string",
+  "experience": "string",
+  "specialization": "string",
+  "areaOfInterest": "string",
+  "certifications": "string"
+}
+
+
+
+
+Resume Tracking:
+
+Urls:
+
+Get all resumes:-
+https://localhost:7067/api/Admin/ResumeTracking
+
+Post one manually:-
+https://localhost:7067/api/Admin/ResumeTracking
+
+Get by resume id:-
+https://localhost:7067/api/Admin/ResumeTracking/{ResumeId}
+
+Update a resume:-
+https://localhost:7067/api/Admin/ResumeTracking/{ResumeId}
+
+Delete by resume id:-
+https://localhost:7067/api/Admin/ResumeTracking/{ResumeId}
+
+Hire an applicant:-
+https://localhost:7067/api/Admin/ResumeTracking/HireApplicant/{ResumeId}
+
+
+Jsons:
+For posting:-
+{
+  "applicantName": "string",
+  "phoneNo": "0123456789",
+  "email": "user@example.com",
+  "qualification": "string",
+  "dateOfBirth": "2000-02-02T02:02:02.765Z",
+  "nationality": "string",
+  "address": "string",
+  "applyingFor": "string",
+  "experience": "string",
+  "specialization": "string",
+  "areaOfInterest": "string",
+  "certifications": "string"
+}
+
+For hiring:-
+{
+  "employeeName": "string",
+  "dateOfBirth": "2000-02-02T02:02:02.765Z",
+  "nationality": "string",
+  "address": "string",
+  "phoneNumber": "0123456789"
+  "email": "user@example.com",
+  "managerId": 0,
+  "status": "string",
+  "position": "string",
+  "joiningDate": "2000-02-02T02:02:02.765Z",
+  "departmentId": 0,
+  "previousTrainingCertifications": "string"
+}
+
+
+
+
+
+
+Training:
+
+Urls:
+
+Get all training details:-
+https://localhost:7067/api/Admin/Training
+
+Post a new one:-
+https://localhost:7067/api/Admin/Training
+
+Get training by training id:-
+https://localhost:7067/api/Admin/Training/api/Admin/TrainingByTrainingId/{TrainingId}
+
+Get all employees undergoing the specified training:-
+https://localhost:7067/api/Admin/Training/api/Admin/EmployeesUnderSpecifiedTrainingCourse/{TrainingId}
+
+Get all trainings underwent by the specified employee:-
+https://localhost:7067/api/Admin/Training/api/Admin/TrainingUnderwentBySpecifiedEmployee/{EmployeeId}
+
+Update training by training id:-
+https://localhost:7067/api/Admin/Training/{TrainingId}
+
+Delete by training id:-
+https://localhost:7067/api/Admin/Training/{TrainingId}
+
+Json:
+{
+  "trainingName": "string"
+}
+
+
+
