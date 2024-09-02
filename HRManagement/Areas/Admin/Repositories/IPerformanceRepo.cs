@@ -41,10 +41,30 @@
             PerformanceDetail e = _context.PerformanceDetails.Find(id);
             if (e != null)
             {
-                e.EvaluatorName = performance.EvaluatorName;
-                e.EvaluationPeriod = performance.EvaluationPeriod;
-                e.XoxoPoints = performance.XoxoPoints;
+
+                if (!performance.EvaluatorName.Equals("string"))
+                {
+                    e.EvaluatorName = performance.EvaluatorName;
+                }
+
+                if (performance.EvaluationPeriod != 0)
+                {
+                    e.EvaluationPeriod = performance.EvaluationPeriod;
+                }
+
+                if (performance.XoxoPoints != 0)
+                {
+                    e.XoxoPoints = performance.XoxoPoints;
+                }
+
+
+                //e.EvaluatorName = performance.EvaluatorName;
+                //e.EvaluationPeriod = performance.EvaluationPeriod;
+                //e.XoxoPoints = performance.XoxoPoints;
                 _context.SaveChanges();
+
+
+
             }
             else throw new InvalidOperationException($"No Performance details found for Performance ID {id}");
 
