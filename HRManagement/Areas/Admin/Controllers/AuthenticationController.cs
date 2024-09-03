@@ -56,19 +56,6 @@ namespace HRManagement.Controllers
                     signingCredentials: signinCredentials
                 );
                 var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
-                CookieOptions cookieOptions = new CookieOptions
-                {
-                    Domain = "localhost",
-                    Path = "/",
-                    Secure = true,
-                    Expires = DateTime.Now.AddMinutes(60),
-                    HttpOnly = true,
-                    IsEssential = true
-
-
-                };
-             //   HttpContext.Session.SetString("username", login.Username);
-           //     Response.Cookies.Append(login.Username, tokenString);
                 return Ok(new JWTTokenResponse { Token = tokenString });
             }
             return Unauthorized();

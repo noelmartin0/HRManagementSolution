@@ -43,18 +43,6 @@ builder.Services.AddSwaggerGen(options =>
 
 builder.Services.AddDbContext<HRManagementDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("nwCnstring")));
 
-//builder.Services.AddDistributedMemoryCache();
-//builder.Services.AddSession(options =>
-//{
-//    options.IdleTimeout = TimeSpan.FromSeconds(10);
-//    options.IOTimeout = TimeSpan.FromSeconds(10);
-//    options.Cookie.Name = "HRManagement.Session";
-//    options.Cookie.HttpOnly = true;
-//    options.Cookie.IsEssential = true;
-//    options.Cookie.Path = "/";
-//    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
-//});
-
 builder.Services.AddScoped<IEmployeeRepo, EmployeeRepo>();
 builder.Services.AddScoped<IDepartmentRepo, DepartmentRepo>();
 builder.Services.AddScoped<IPayrollRepo, PayrollRepo>();
