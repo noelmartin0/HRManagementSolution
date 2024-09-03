@@ -7,7 +7,7 @@ namespace HRManagement.Models
     public class HRManagementDBContext:DbContext
     {
         
-                public HRManagementDBContext(DbContextOptions<HRManagementDBContext> options) : base(options)
+        public HRManagementDBContext(DbContextOptions<HRManagementDBContext> options) : base(options)
         {
 
         }
