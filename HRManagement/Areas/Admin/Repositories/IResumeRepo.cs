@@ -4,37 +4,37 @@ namespace HRManagement.Areas.Admin.Models
 {
     public interface IResumeRepo
     {
-        
-            ResumeTrackingDetail GetResumeById(int id);
-            List<ResumeTrackingDetail> GetAllResumes();
-            void AddResume(ResumeTrackingDetail resume);
 
-            void DeleteResume(int id);
-            void UpdateResume(int id, ResumeTrackingDetail resume);
+        ResumeTrackingDetail GetResumeById(int id);
+        List<ResumeTrackingDetail> GetAllResumes();
+        void AddResume(ResumeTrackingDetail resume);
 
-            void HireEmployee(int id, EmployeeDetail employeefromPostMethod);
+        void DeleteResume(int id);
+        void UpdateResume(int id, ResumeTrackingDetail resume);
 
-            //Write the promote() function
-     }
+        void HireEmployee(int id, EmployeeDetail employeefromPostMethod);
 
-        public class ResumeTrackingRepo : IResumeRepo
+        //Write the promote() function
+    }
+
+    public class ResumeTrackingRepo : IResumeRepo
+    {
+
+        HRManagementDBContext _context;
+        public ResumeTrackingRepo(HRManagementDBContext context)
+        {
+            _context = context;
+        }
+
+        public void AddResume(ResumeTrackingDetail resume)
         {
 
-            HRManagementDBContext _context;
-            public ResumeTrackingRepo(HRManagementDBContext context)
-            {
-                _context = context;
-            }
+            _context.ResumeTrackingDetails.Add(resume);
+            _context.SaveChanges();
+        }
 
-            public void AddResume(ResumeTrackingDetail resume)
-            {
-
-                _context.ResumeTrackingDetails.Add(resume);
-                _context.SaveChanges();
-            }
-
-            public void DeleteResume(int id)
-         {
+        public void DeleteResume(int id)
+        {
             ResumeTrackingDetail m = _context.ResumeTrackingDetails.Find(id);
             if (m == null)
             {
@@ -43,24 +43,24 @@ namespace HRManagement.Areas.Admin.Models
             _context.ResumeTrackingDetails.Remove(m);
             _context.SaveChanges();
 
-            }
+        }
 
-            public List<ResumeTrackingDetail> GetAllResumes()
-            {
-                return _context.ResumeTrackingDetails.ToList();
-            }
+        public List<ResumeTrackingDetail> GetAllResumes()
+        {
+            return _context.ResumeTrackingDetails.ToList();
+        }
 
-            public ResumeTrackingDetail GetResumeById(int id)
-            {
+        public ResumeTrackingDetail GetResumeById(int id)
+        {
             ResumeTrackingDetail m = _context.ResumeTrackingDetails.Find(id);
             if (m == null)
             {
                 throw new InvalidOperationException($"No Resume is found having ID = {id}");
             }
-                return m;
-            }
+            return m;
+        }
 
-        public void HireEmployee(int id,EmployeeDetail employeefromPostMethod)
+        public void HireEmployee(int id, EmployeeDetail employeefromPostMethod)
         {
             ResumeTrackingDetail resume = _context.ResumeTrackingDetails.Find(id);
 
@@ -68,7 +68,7 @@ namespace HRManagement.Areas.Admin.Models
             {
                 throw new InvalidOperationException($"No Resume is found having ID = {id}");
             }
-            
+
             EmployeeDetail emp = new EmployeeDetail();
             emp.EmployeeName = resume.ApplicantName;
             emp.DateOfBirth = resume.DateOfBirth;
@@ -86,12 +86,15 @@ namespace HRManagement.Areas.Admin.Models
             _context.SaveChanges();
             AddEmployeeLeave(emp.EmployeeId);
             AddEmployeePayroll(emp.EmployeeId);
+            AddEmployeePerformance(emp.EmployeeId,emp.DepartmentId);
+
             _context.ResumeTrackingDetails.Remove(resume);
             _context.SaveChanges();
         }
 
+
         public void UpdateResume(int id, ResumeTrackingDetail resume)
-            {
+        {
             ResumeTrackingDetail r = _context.ResumeTrackingDetails.Find(id);
             if (r == null)
             {
@@ -187,8 +190,15 @@ namespace HRManagement.Areas.Admin.Models
         }
 
 
+        private void AddEmployeePerformance(int employeeId, int deptId)
+        {
+            PerformanceDetail performanceDetail = new PerformanceDetail();
+            performanceDetail.EmployeeId = employeeId;
+            performanceDetail.DepartmentId = deptId;
+            _context.PerformanceDetails.Add(performanceDetail);
+        }
 
     }
 
-   }
+}
 

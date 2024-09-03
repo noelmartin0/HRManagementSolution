@@ -35,11 +35,11 @@ namespace HRManagement.Models
 
         [StringLength(50)]
         [MinLength(3)]
-        [CheckStatus(new string[] { "Permanent", "Trainee", "Terminated", "Resigned" })]
+        [CheckStatus(new string[] { "Associate Software Engineer", "Software Engineer", "Manager", "Team Lead" })]
         public string ApplyingFor { get; set; }
 
         [StringLength(50)]
-        [MinLength(3)]
+        [MinLength(1)]
         public string? Experience { get; set; }
 
         [StringLength(50)]

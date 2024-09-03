@@ -172,7 +172,7 @@ Delete by payroll id:-
 https://localhost:7067/api/Admin/Payroll/{PayrollId}
 
 Get payroll by employee id:-
-https://localhost:7067/Employee/{EmployeeId}
+https://localhost:7067/api/Admin/Payroll/Employee/{EmployeeId}
 
 Update payroll by employee id:-
 https://localhost:7067/api/Admin/Payroll/{EmployeeId}
@@ -327,7 +327,7 @@ For hiring:-
   "dateOfBirth": "2000-02-02T02:02:02.765Z",
   "nationality": "string",
   "address": "string",
-  "phoneNumber": "0123456789"
+  "phoneNumber": "0123456789",
   "email": "user@example.com",
   "managerId": 0,
   "status": "string",
